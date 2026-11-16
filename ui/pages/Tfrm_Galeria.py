@@ -22,6 +22,10 @@ class Frm_Galeria(QWidget):
 
         uic.loadUi("ui/pages/Tfrm_Galeria.ui", self)
 
+        self._candidatos_filtro = []
+        self._texto_filtro_anterior = ""
+        self._categoria_filtro_anterior = None
+
         # Directorios de imágenes
         self.BASE_DIR = Path(__file__).resolve().parents[2]
 
@@ -51,6 +55,10 @@ class Frm_Galeria(QWidget):
         # Configuración de componentes
         self.configurar_galeria()
         self.configurar_combobox(self.cmb_categoria)
+        self.aplicar_estilo_scrollbar(
+            self.listWidget_imagenes.verticalScrollBar()    
+        )
+
 
         # Eventos y datos
         self.conectar_eventos()
@@ -84,17 +92,10 @@ class Frm_Galeria(QWidget):
         self.listWidget_imagenes.setSpacing(8)
 
         self.listWidget_imagenes.setSelectionMode(
-            self.listWidget_imagenes.SelectionMode.SingleSelection
+            self.listWidget_imagenes.SelectionMode.ExtendedSelection
         )
 
-        self.listWidget_imagenes.setHorizontalScrollBarPolicy(
-            Qt.ScrollBarPolicy.ScrollBarAlwaysOff
-        )
-
-        self.listWidget_imagenes.setVerticalScrollBarPolicy(
-            Qt.ScrollBarPolicy.ScrollBarAsNeeded
-        )
-
+  
     # ----------------------------------
     # CONECTAR EVENTOS
     # ----------------------------------
@@ -107,6 +108,10 @@ class Frm_Galeria(QWidget):
 
         self.cmb_categoria.currentTextChanged.connect(
             self.filtrar_imagenes
+        )
+
+        self.listWidget_imagenes.itemSelectionChanged.connect(
+            self.actualizar_seleccion_tarjetas
         )
 
         self.btn_agregar.clicked.connect(
@@ -158,6 +163,9 @@ class Frm_Galeria(QWidget):
 
     def cargar_imagenes(self):
 
+        self._candidatos_filtro = []
+        self._texto_filtro_anterior = ""
+        self._categoria_filtro_anterior = None
         self.listWidget_imagenes.clear()
 
         imagenes = self.obtener_imagenes()
@@ -169,7 +177,8 @@ class Frm_Galeria(QWidget):
             if pixmap.isNull():
                 continue
 
-            if ruta.is_relative_to(self.DIR_ORIGINALS):
+            es_original = ruta.is_relative_to(self.DIR_ORIGINALS)
+            if es_original:
                 categoria = "Originales"
             else:
                 categoria = "Procesadas"
@@ -179,6 +188,15 @@ class Frm_Galeria(QWidget):
             item.setData(
                 Qt.ItemDataRole.UserRole,
                 str(ruta)
+            )
+
+            item.setData(
+                Qt.ItemDataRole.UserRole + 1,
+                ruta.name.casefold()
+            )
+            item.setData(
+                Qt.ItemDataRole.UserRole + 2,
+                es_original
             )
 
             tarjeta = TarjetaImagen(
@@ -197,6 +215,21 @@ class Frm_Galeria(QWidget):
             )
 
         self.filtrar_imagenes()
+        self.actualizar_seleccion_tarjetas()
+
+    def actualizar_seleccion_tarjetas(self):
+
+        self.btn_agregar.setEnabled(
+            not self.listWidget_imagenes.selectedItems()
+        )
+
+        for i in range(self.listWidget_imagenes.count()):
+
+            item = self.listWidget_imagenes.item(i)
+            tarjeta = self.listWidget_imagenes.itemWidget(item)
+
+            if tarjeta is not None:
+                tarjeta.set_selected(item.isSelected())
 
     # ----------------------------------
     # FILTRAR IMÁGENES
@@ -204,43 +237,44 @@ class Frm_Galeria(QWidget):
 
     def filtrar_imagenes(self):
 
-        texto = self.lineEdit_buscar.text().strip().lower()
+        texto = self.lineEdit_buscar.text().strip().casefold()
+        indice_categoria = self.cmb_categoria.currentIndex()
 
-        categoria = self.cmb_categoria.currentText()
+        es_busqueda_incremental = (
+            indice_categoria == self._categoria_filtro_anterior
+            and texto.startswith(self._texto_filtro_anterior)
+        )
 
-        for i in range(self.listWidget_imagenes.count()):
+        if es_busqueda_incremental:
+            candidatos = self._candidatos_filtro
+        else:
+            candidatos = [
+                self.listWidget_imagenes.item(i)
+                for i in range(self.listWidget_imagenes.count())
+            ]
 
-            item = self.listWidget_imagenes.item(i)
+        coincidencias = []
+        for item in candidatos:
+            nombre = item.data(Qt.ItemDataRole.UserRole + 1)
+            es_original = item.data(Qt.ItemDataRole.UserRole + 2)
 
-            ruta = Path(
-                item.data(Qt.ItemDataRole.UserRole)
-            )
+            coincide_nombre = nombre.startswith(texto)
 
-            # Filtro por nombre
-            coincide_nombre = texto in item.text().lower()
+            if indice_categoria == 1:
+                coincide_categoria = es_original
+            elif indice_categoria == 2:
+                coincide_categoria = not es_original
+            else:
+                coincide_categoria = True
 
-            # Filtro por categoría
-            coincide_categoria = True
+            coincide = coincide_nombre and coincide_categoria
+            item.setHidden(not coincide)
+            if coincide:
+                coincidencias.append(item)
 
-            # if categoria == self.cmb_categoria.itemText(-1):  # "Todas"
-            #     coincide_categoria = True
-
-            if categoria == self.cmb_categoria.itemText(1):  # "Originales" 
-                coincide_categoria = ruta.is_relative_to(
-                    self.DIR_ORIGINALS
-                )
- 
-            elif categoria == self.cmb_categoria.itemText(2):  # "Procesadas" 
-                coincide_categoria = ruta.is_relative_to(
-                    self.DIR_PROCESSED
-                )
-
-           
-
-            # Aplicar ambos filtros
-            item.setHidden(
-                not (coincide_nombre and coincide_categoria)
-            )
+        self._candidatos_filtro = coincidencias
+        self._texto_filtro_anterior = texto
+        self._categoria_filtro_anterior = indice_categoria
 
     # ----------------------------------
     # AGREGAR IMÁGENES
@@ -299,55 +333,26 @@ class Frm_Galeria(QWidget):
 
     def modificar_imagen(self):
 
-        item = self.listWidget_imagenes.currentItem()
+        items = self.listWidget_imagenes.selectedItems()
 
-        if item is None:
+        if not items:
             QMessageBox.warning(
                 self,
                 "Modificar imagen",
-                "Selecciona una imagen de la galería."
+                "Selecciona una o más imágenes de la galería."
             )
             return
 
-        ruta_actual = Path(
-            item.data(Qt.ItemDataRole.UserRole)
-        )
-
-        if not ruta_actual.exists():
-
-            QMessageBox.warning(
-                self,
-                "Archivo no encontrado",
-                "La imagen ya no existe en el directorio."
-            )
-
-            self.cargar_imagenes()
-            return
-
-        # Determinar categoría actual
-        if ruta_actual.is_relative_to(self.DIR_ORIGINALS):
-            categoria_actual = "Originales"
-
-        elif ruta_actual.is_relative_to(self.DIR_PROCESSED):
-            categoria_actual = "Procesadas"
-
-        else:
-            QMessageBox.warning(
-                self,
-                "Ubicación desconocida",
-                "La imagen no pertenece a una categoría válida."
-            )
-            return
-
-        # ------------------------------
-        # CAMBIAR NOMBRE
-        # ------------------------------
+        rutas = [
+            Path(item.data(Qt.ItemDataRole.UserRole))
+            for item in items
+        ]
 
         nuevo_nombre, aceptar = QInputDialog.getText(
             self,
             "Modificar nombre",
-            "Introduce el nuevo nombre:",
-            text=ruta_actual.stem
+            "Introduce el nombre base para las imágenes seleccionadas:",
+            text=rutas[0].stem
         )
 
         if not aceptar:
@@ -375,87 +380,120 @@ class Frm_Galeria(QWidget):
             )
             return
 
-        # ------------------------------
-        # CAMBIAR CATEGORÍA
-        # ------------------------------
+        if any(not ruta.exists() for ruta in rutas):
+            QMessageBox.warning(
+                self,
+                "Archivo no encontrado",
+                "Una o más imágenes ya no existen. Se actualizará la galería."
+            )
+            self.cargar_imagenes()
+            return
 
         categorias = ["Originales", "Procesadas"]
+
+        ruta_actual = rutas[0]
+        if ruta_actual.is_relative_to(self.DIR_ORIGINALS):
+            indice_categoria = 0
+        elif ruta_actual.is_relative_to(self.DIR_PROCESSED):
+            indice_categoria = 1
+        else:
+            QMessageBox.warning(
+                self,
+                "Ubicación desconocida",
+                "La imagen no pertenece a una categoría válida."
+            )
+            return
 
         nueva_categoria, aceptar = QInputDialog.getItem(
             self,
             "Modificar categoría",
-            "Selecciona la categoría:",
+            "Selecciona la categoría para todas las imágenes:",
             categorias,
-            categorias.index(categoria_actual),
+            indice_categoria,
             False
         )
 
         if not aceptar:
             return
 
-        # Determinar directorio destino
         if nueva_categoria == "Originales":
             nuevo_directorio = self.DIR_ORIGINALS
-
         else:
             nuevo_directorio = self.DIR_PROCESSED
 
-        # Construir nueva ruta
-        nuevo_archivo = (
-            nuevo_nombre + ruta_actual.suffix
-        )
+        for ruta in rutas:
+            if not (
+                ruta.is_relative_to(self.DIR_ORIGINALS)
+                or ruta.is_relative_to(self.DIR_PROCESSED)
+            ):
+                QMessageBox.warning(
+                    self,
+                    "Ubicación desconocida",
+                    f"{ruta.name} no pertenece a una categoría válida."
+                )
+                return
 
-        nueva_ruta = nuevo_directorio / nuevo_archivo
+        try:
+            nuevo_directorio.mkdir(parents=True, exist_ok=True)
+            reservados = {
+                str(ruta.resolve()).casefold()
+                for ruta in nuevo_directorio.iterdir()
+                if ruta.is_file()
+            }
 
-        # ------------------------------
-        # VALIDAR DESTINO
-        # ------------------------------
+            destinos = []
+            for ruta in rutas:
+                numero = 1
+                while True:
+                    sufijo = "" if numero == 1 else f"_{numero}"
+                    destino = nuevo_directorio / (
+                        f"{nuevo_nombre}{sufijo}{ruta.suffix}"
+                    )
+                    clave_destino = str(destino.resolve()).casefold()
 
-        if nueva_ruta != ruta_actual and nueva_ruta.exists():
+                    if (
+                        clave_destino not in reservados
+                        or clave_destino == str(ruta.resolve()).casefold()
+                    ):
+                        destinos.append((ruta, destino))
+                        reservados.add(clave_destino)
+                        break
 
+                    numero += 1
+        except OSError as error:
             QMessageBox.warning(
                 self,
-                "Archivo existente",
-                "Ya existe una imagen con ese nombre en la categoría seleccionada."
+                "Error al modificar",
+                f"No se pudo preparar la categoría seleccionada:\n{error}"
             )
             return
 
-        # ------------------------------
-        # RENOMBRAR / MOVER
-        # ------------------------------
+        errores = []
+        modificadas = 0
 
-        try:
+        for ruta, destino in destinos:
+            try:
+                if ruta != destino:
+                    ruta.rename(destino)
+                modificadas += 1
+            except OSError as error:
+                errores.append(f"{ruta.name}: {error}")
 
-            if nueva_ruta != ruta_actual:
+        self.cargar_imagenes()
 
-                nuevo_directorio.mkdir(
-                    parents=True,
-                    exist_ok=True
-                )
-
-                ruta_actual.rename(nueva_ruta)
-
-            self.cargar_imagenes()
-
+        if errores:
+            QMessageBox.warning(
+                self,
+                "Modificación incompleta",
+                f"Imágenes modificadas: {modificadas}\n\n"
+                "No se pudieron modificar:\n" + "\n".join(errores)
+            )
+        else:
             QMessageBox.information(
                 self,
-                "Imagen modificada",
-                "Los cambios se realizaron correctamente."
+                "Imágenes modificadas",
+                f"Imágenes modificadas: {modificadas}"
             )
-
-        except OSError as error:
-
-            QMessageBox.critical(
-                self,
-                "Error al modificar",
-                f"No se pudo modificar la imagen:\n{error}"
-            )
-
-
-
-        # ----------------------------------
-        # ELIMINAR IMAGEN
-        # ----------------------------------
 
     # ----------------------------------
     # ELIMINAR IMAGEN
@@ -463,25 +501,26 @@ class Frm_Galeria(QWidget):
 
     def eliminar_imagen(self):
 
-        item = self.listWidget_imagenes.currentItem()
+        items = self.listWidget_imagenes.selectedItems()
 
-        if item is None:
+        if not items:
             QMessageBox.warning(
                 self,
                 "Eliminar imagen",
-                "Selecciona una imagen de la galería."
+                "Selecciona una o más imágenes de la galería."
             )
             return
 
-        ruta = Path(
-            item.data(Qt.ItemDataRole.UserRole)
-        )
+        rutas = [
+            Path(item.data(Qt.ItemDataRole.UserRole))
+            for item in items
+        ]
 
         respuesta = QMessageBox.question(
             self,
             "Confirmar eliminación",
-            f"¿Deseas eliminar permanentemente esta imagen?\n\n"
-            f"{ruta.name}",
+            "¿Deseas eliminar permanentemente estas imágenes?\n\n"
+            + "\n".join(ruta.name for ruta in rutas),
             QMessageBox.StandardButton.Yes |
             QMessageBox.StandardButton.No,
             QMessageBox.StandardButton.No
@@ -490,27 +529,32 @@ class Frm_Galeria(QWidget):
         if respuesta != QMessageBox.StandardButton.Yes:
             return
 
-        try:
+        eliminadas = 0
+        errores = []
 
-            if not ruta.exists():
-                raise FileNotFoundError("El archivo ya no existe.")
+        for ruta in rutas:
+            try:
+                if not ruta.exists():
+                    raise FileNotFoundError("El archivo ya no existe.")
+                ruta.unlink()
+                eliminadas += 1
+            except OSError as error:
+                errores.append(f"{ruta.name}: {error}")
 
-            ruta.unlink()
+        self.cargar_imagenes()
 
-            self.cargar_imagenes()
-
+        if errores:
+            QMessageBox.warning(
+                self,
+                "Eliminación incompleta",
+                f"Imágenes eliminadas: {eliminadas}\n\n"
+                "No se pudieron eliminar:\n" + "\n".join(errores)
+            )
+        else:
             QMessageBox.information(
                 self,
-                "Imagen eliminada",
-                "La imagen se eliminó correctamente."
-            )
-
-        except OSError as error:
-
-            QMessageBox.critical(
-                self,
-                "Error",
-                f"No se pudo eliminar la imagen:\n{error}"
+                "Imágenes eliminadas",
+                f"Imágenes eliminadas: {eliminadas}"
             )
 
     # ----------------------------------
@@ -531,4 +575,41 @@ class Frm_Galeria(QWidget):
 
 
 
+    # ----------------------------------
+    # ESTILO DE LA SCROLLBAR VERTICAL
+    # ----------------------------------
+
+    def aplicar_estilo_scrollbar(self, scrollbar):
+
+      scrollbar.setStyleSheet("""
+                 QScrollBar:vertical {
+                     background-color: #0b0f1a;
+                     width: 8px;
+                     margin: 4px 2px 4px 0;
+                     border: none;
+                     border-radius: 4px;
+                 }
+     
+                 QScrollBar::handle:vertical {
+                     background-color: #2f3e56;
+                     border-radius: 4px;
+                     min-height: 40px;
+                 }
+     
+                 QScrollBar::handle:vertical:hover {
+                     background-color: #65D6C6;
+                 }
+     
+                 QScrollBar::add-line:vertical,
+                 QScrollBar::sub-line:vertical {
+                     height: 0px;
+                     background: none;
+                 }
+     
+                 QScrollBar::add-page:vertical,
+                 QScrollBar::sub-page:vertical {
+                     background: none;
+                 }
+             """)
+      
 

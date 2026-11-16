@@ -172,7 +172,7 @@ border-radius: 20px;</string>
           <number>0</number>
          </property>
          <item>
-          <layout class="QGridLayout" name="gridLayout" columnstretch="2,3,5" rowminimumheight="0,0,0">
+          <layout class="QGridLayout" name="gridLayout" columnstretch="3,2,5" rowminimumheight="0,0,0">
            <property name="leftMargin">
             <number>9</number>
            </property>
@@ -245,18 +245,7 @@ color: rgb(161, 161, 161);</string>
              </property>
             </widget>
            </item>
-           <item row="1" column="1">
-            <widget class="QLabel" name="label_2">
-             <property name="styleSheet">
-              <string notr="true">font: 12pt &quot;Arial&quot;;
-color: rgb(161, 161, 161);</string>
-             </property>
-             <property name="text">
-              <string>Categoría</string>
-             </property>
-            </widget>
-           </item>
-           <item row="2" column="1">
+           <item row="2" column="0">
             <widget class="QComboBox" name="cmb_categoria">
              <property name="cursor">
               <cursorShape>PointingHandCursor</cursorShape>
@@ -362,6 +351,17 @@ QComboBox QAbstractItemView::item:hover {
              </item>
             </widget>
            </item>
+           <item row="1" column="0">
+            <widget class="QLabel" name="label_2">
+             <property name="styleSheet">
+              <string notr="true">font: 12pt &quot;Arial&quot;;
+color: rgb(161, 161, 161);</string>
+             </property>
+             <property name="text">
+              <string>Categoría</string>
+             </property>
+            </widget>
+           </item>
           </layout>
          </item>
          <item>
@@ -371,70 +371,31 @@ QComboBox QAbstractItemView::item:hover {
            </property>
            <property name="styleSheet">
             <string notr="true">/* GALERÍA */
+
+/* ===================== GALERÍA ===================== */
 QListWidget#listWidget_imagenes {
     background-color: #0b0f1a;
     border: none;
     outline: none;
-    padding: 12px;
+    padding: 14px;
     color: #c8d3e0;
 }
 
-/* TARJETAS */
+/* ===================== ITEMS ===================== */
 QListWidget#listWidget_imagenes::item {
-    background-color: #111a2e;
-    border: 1px solid #2f3e56;
-    border-radius: 10px;
-    padding: 8px;
-    margin: 5px;
-    color: #c8d3e0;
-}
-
-/* HOVER */
-QListWidget#listWidget_imagenes::item:hover {
-    background-color: #1b2a41;
-    border: 1px solid #65D6C6;
-}
-
-/* SELECCIONADO */
-QListWidget#listWidget_imagenes::item:selected {
-    background-color: #1b2a41;
-    border: 2px solid #65D6C6;
-    color: #65D6C6;
-}
-
-/* SCROLLBAR */
-QListWidget#listWidget_imagenes QScrollBar:vertical {
-    background-color: #0b0f1a;
-    width: 9px;
+    background-color: transparent;
     border: none;
-    margin: 0;
+    border-radius: 12px;
+    padding: 4px;
+    margin: 6px;
 }
 
-QListWidget#listWidget_imagenes QScrollBar::handle:vertical {
-    background-color: #2f3e56;
-    border-radius: 4px;
-    min-height: 30px;
+QListWidget#listWidget_imagenes::item:hover {
+    background-color: transparent;
 }
 
-QListWidget#listWidget_imagenes QScrollBar::handle:vertical:hover {
-    background-color: #65D6C6;
-}
-
-/* SCROLLBAR - forzar ocultar */
-QListWidget#listWidget_imagenes QScrollBar:vertical {
-    width: 0px;
-    background: transparent;
-}
-
-QListWidget#listWidget_imagenes QScrollBar:horizontal {
-    height: 0px;
-    background: transparent;
-}
-
-
-QListWidget#listWidget_imagenes QScrollBar::add-line:vertical,
-QListWidget#listWidget_imagenes QScrollBar::sub-line:vertical {
-    height: 0px;
+QListWidget#listWidget_imagenes::item:selected {
+    background-color: transparent;
     border: none;
 }
 
@@ -444,7 +405,7 @@ QListWidget#listWidget_imagenes QScrollBar::sub-line:vertical {
             <enum>QFrame::Shape::NoFrame</enum>
            </property>
            <property name="verticalScrollBarPolicy">
-            <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
+            <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOn</enum>
            </property>
            <property name="horizontalScrollBarPolicy">
             <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
@@ -631,7 +592,13 @@ QPushButton#btn_agregar:hover {
 QPushButton#btn_agregar:pressed {
     background-color: #388E3C;
     color: #ffffff;
-}</string>
+}
+QPushButton#btn_agregar:disabled {
+    background-color: rgba(47, 62, 86, 0.35);
+    border: 1px solid rgba(47, 62, 86, 0.6);
+    color: #64748b;
+}
+</string>
              </property>
              <property name="text">
               <string>Agregar</string>
