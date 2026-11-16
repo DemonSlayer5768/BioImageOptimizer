@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Frm_</class>
- <widget class="QWidget" name="Frm_">
+ <class>Frm_Evaluacion</class>
+ <widget class="QWidget" name="Frm_Evaluacion">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -74,7 +74,7 @@
           <string notr="true">font: 700 20pt &quot;Arial&quot;;</string>
          </property>
          <property name="text">
-          <string>Pantalla</string>
+          <string>Evaluación</string>
          </property>
         </widget>
         <widget class="QLabel" name="lb_descripcion">
@@ -82,7 +82,7 @@
           <rect>
            <x>30</x>
            <y>40</y>
-           <width>171</width>
+           <width>190</width>
            <height>21</height>
           </rect>
          </property>
@@ -91,7 +91,7 @@
 color: rgb(161, 161, 161);</string>
          </property>
          <property name="text">
-          <string>Descripcion</string>
+          <string>Evaluación de imagenes</string>
          </property>
         </widget>
         <widget class="QLabel" name="Line">

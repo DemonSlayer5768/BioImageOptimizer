@@ -237,7 +237,7 @@ QPushButton:disabled {
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="btn_Galeria">
+        <widget class="QPushButton" name="btn_galeria">
          <property name="enabled">
           <bool>true</bool>
          </property>
