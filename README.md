@@ -52,67 +52,61 @@ Comandos útiles para configurar y trabajar con el proyecto.
 ```text
 BioImageOptimizer/
 │
+├── README.md
 ├── main.py
 ├── requirements.txt
-│
-├── ui/
-│   ├── MainWindow.ui
-│   ├── main_window.py
-│   │
-│   ├── pages/
-│   │   ├── __init__.py
-│   │   ├── Dashboard.ui
-│   │   ├── dashboard.py
-│   │   ├── Laboratory.ui
-│   │   ├── laboratory.py
-│   │   ├── Optimization.ui
-│   │   ├── optimization.py
-│   │   ├── Binarization.ui
-│   │   ├── binarization.py
-│   │   ├── Segmentation.ui
-│   │   ├── segmentation.py
-│   │   ├── Processing.ui
-│   │   ├── processing.py
-│   │   ├── Restoration.ui
-│   │   ├── restoration.py
-│   │   ├── Evaluation.ui
-│   │   ├── evaluation.py
-│   │   ├── History.ui
-│   │   ├── history.py
-│   │   ├── Settings.ui
-│   │   └── settings.py
-│   │
-│   └── components/
-│       ├── __init__.py
-│       ├── image_viewer.ui
-│       ├── image_viewer.py
-│       ├── image_comparator.ui
-│       ├── image_comparator.py
-│       ├── parameter_panel.ui
-│       ├── parameter_panel.py
-│       ├── metric_card.ui
-│       └── metric_card.py
+├── .gitignore
+├── env/                     # entorno virtual local
 │
 ├── algorithms/
-│   ├── optimization/
-│   ├── binarization/
-│   ├── segmentation/
-│   ├── processing/
-│   └── restoration/
+│   ├── binarizacion/
+│   ├── optimizacion/
+│   ├── procesamiento/
+│   ├── restauracion/
+│   └── segmentacion/
 │
 ├── core/
-│   ├── image_manager.py
-│   ├── processing_engine.py
-│   ├── experiment_manager.py
-│   └── metrics.py
 │
-├── database/
-│   └── database.py
+├── data/
+│   ├── database/
+│   │   └── bioimageoptimizer.db
+│   ├── images/
+│   ├── originals/
+│   ├── processed/
+│   └── thumbnails/
 │
-└── resources/
-    ├── icons/
-    ├── images/
-    └── styles/
+├── resources/
+│   ├── Icons/
+│   └── images/
+│
+├── ui/
+│   ├── MainWindow.py
+│   ├── MainWindow.ui
+│   ├── __pycache__/
+│   ├── components/
+│   └── pages/
+│       ├── Tfrm_Binarizacion.py
+│       ├── Tfrm_Binarizacion.ui
+│       ├── Tfrm_Configuracion.py
+│       ├── Tfrm_Configuracion.ui
+│       ├── Tfrm_Dashboard.py
+│       ├── Tfrm_Dashboard.ui
+│       ├── Tfrm_Evaluacion.py
+│       ├── Tfrm_Evaluacion.ui
+│       ├── Tfrm_Galeria.py
+│       ├── Tfrm_Galeria.ui
+│       ├── Tfrm_Historial.py
+│       ├── Tfrm_Historial.ui
+│       ├── Tfrm_Optimizacion.py
+│       ├── Tfrm_Optimizacion.ui
+│       ├── Tfrm_Procesamiento.py
+│       ├── Tfrm_Procesamiento.ui
+│       ├── Tfrm_Restauracion.py
+│       ├── Tfrm_Restauracion.ui
+│       ├── Tfrm_Segmentacion.py
+│       └── Tfrm_Segmentacion.ui
+│
+└── .git/
 ```
 
 ---
