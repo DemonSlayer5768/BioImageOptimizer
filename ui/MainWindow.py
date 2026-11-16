@@ -9,7 +9,7 @@ from ui.pages.Tfrm_Restauracion import Frm_Restauracion
 from ui.pages.Tfrm_Segmentacion import Frm_Segmentacion
 from ui.pages.Tfrm_Binarizacion import Frm_Binarizacion
 from ui.pages.Tfrm_Configuracion import Frm_Configuracion
-from ui.pages.Tfrm_Evaluacion import Frm_Evaluacion
+# from ui.pages.Tfrm_Evaluacion import Frm_Evaluacion
 from ui.pages.Tfrm_Historial import Frm_Historial
 
 
