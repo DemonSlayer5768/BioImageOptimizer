@@ -55,20 +55,25 @@ BioImageOptimizer/
 ├── README.md
 ├── main.py
 ├── requirements.txt
-├── .gitIgnore
+├── .gitignore
 ├── env/                     # entorno virtual local
 │
 ├── algorithms/
 │   ├── binarizacion/
 │   ├── optimizacion/
-│   ├── procesamineto/
+│   ├── procesamiento/
 │   ├── restauracion/
 │   └── segmentacion/
 │
 ├── core/
 │
-├── database/
-│   └── databse.py
+├── data/
+│   ├── database/
+│   │   └── bioimageoptimizer.db
+│   ├── images/
+│   ├── originals/
+│   ├── processed/
+│   └── thumbnails/
 │
 ├── resources/
 │   ├── Icons/
@@ -78,7 +83,7 @@ BioImageOptimizer/
 │   ├── MainWindow.py
 │   ├── MainWindow.ui
 │   ├── __pycache__/
-│   ├── componets/
+│   ├── components/
 │   └── pages/
 │       ├── Tfrm_Binarizacion.py
 │       ├── Tfrm_Binarizacion.ui
