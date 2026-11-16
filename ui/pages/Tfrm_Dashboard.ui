@@ -557,7 +557,7 @@ QLabel{
                 <number>9</number>
                </property>
                <item>
-                <widget class="QToolButton" name="Tbtn_CargarImg">
+                <widget class="QToolButton" name="Tbtn_Iportar_Imagenes">
                  <property name="minimumSize">
                   <size>
                    <width>150</width>

@@ -21,3 +21,8 @@ Thumbs.db
 
 # Archivos temporales
 *.log
+
+#ignorar datos de la carpeta /data/images/
+/data/images/originals/*
+/data/images/processed/*
+/data/images/thumbnails/*
