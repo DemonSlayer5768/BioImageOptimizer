@@ -443,7 +443,7 @@ QListWidget#listWidget_imagenes::item:selected {
           </widget>
          </item>
          <item>
-          <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,2,1,1,1">
+          <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,1,2,1,1,1">
            <property name="spacing">
             <number>9</number>
            </property>
@@ -459,6 +459,55 @@ QListWidget#listWidget_imagenes::item:selected {
            <property name="bottomMargin">
             <number>15</number>
            </property>
+           <item>
+            <widget class="QPushButton" name="btn_abrir">
+             <property name="cursor">
+              <cursorShape>PointingHandCursor</cursorShape>
+             </property>
+             <property name="layoutDirection">
+              <enum>Qt::LayoutDirection::RightToLeft</enum>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton#btn_abrir {
+    background-color: transparent;
+    border: 1px solid rgba(66, 165, 245, 0.45);
+    border-radius: 12px;
+    color: #42A5F5;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 4px 12px;
+    min-height: 22px;
+
+}
+QPushButton#btn_abrir:hover {
+    background-color: rgba(66, 165, 245, 0.25);
+    border: 1px solid #42A5F5;
+}
+QPushButton#btn_abrir:pressed {
+    background-color: #1E88E5;
+    color: #ffffff;
+}
+
+</string>
+             </property>
+             <property name="text">
+              <string>Abrir</string>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normaloff>../../resources/Icons/Icons_azules/Verify.png</normaloff>../../resources/Icons/Icons_azules/Verify.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>15</width>
+               <height>15</height>
+              </size>
+             </property>
+             <property name="autoRepeat">
+              <bool>false</bool>
+             </property>
+            </widget>
+           </item>
            <item>
             <widget class="QPushButton" name="btn_eliminar">
              <property name="cursor">

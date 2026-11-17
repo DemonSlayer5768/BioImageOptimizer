@@ -34,6 +34,13 @@ class MainWindow(QMainWindow):
         self.historial = Frm_Historial()
         # self.evaluacion = Frm_Evaluacion()
 
+        self.binarizacion.solicitar_galeria.connect(
+            self.abrir_galeria_para_binarizacion
+        )
+        self.galeria.imagen_seleccionada.connect(
+            self.cargar_imagen_en_binarizacion
+        )
+
         # Agregar paginas al Stack
         self.stackedWidget.addWidget(self.dashboard)
         self.stackedWidget.addWidget(self.galeria)
@@ -89,5 +96,16 @@ class MainWindow(QMainWindow):
         self.change_page(self.dashboard)
 
     def change_page(self, page):
+        if page is not self.galeria:
+            self.galeria.set_modo_seleccion(False)
 
         self.stackedWidget.setCurrentWidget(page)
+
+    def abrir_galeria_para_binarizacion(self):
+        self.galeria.set_modo_seleccion(True)
+        self.change_page(self.galeria)
+
+    def cargar_imagen_en_binarizacion(self, ruta):
+        self.galeria.set_modo_seleccion(False)
+        self.binarizacion.cargar_imagen(ruta)
+        self.change_page(self.binarizacion)

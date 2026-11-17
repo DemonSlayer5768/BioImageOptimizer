@@ -12,10 +12,11 @@ from PyQt6.QtWidgets import (
     QInputDialog,
 )
 from PyQt6.QtGui import QPixmap, QIcon
-from PyQt6.QtCore import Qt, QSize
+from PyQt6.QtCore import Qt, QSize, pyqtSignal
 
 
 class Frm_Galeria(QWidget):
+    imagen_seleccionada = pyqtSignal(str)
 
     def __init__(self):
         super().__init__()
@@ -25,6 +26,7 @@ class Frm_Galeria(QWidget):
         self._candidatos_filtro = []
         self._texto_filtro_anterior = ""
         self._categoria_filtro_anterior = None
+        self._modo_seleccion = False
 
         # Directorios de imágenes
         self.BASE_DIR = Path(__file__).resolve().parents[2]
@@ -63,6 +65,7 @@ class Frm_Galeria(QWidget):
         # Eventos y datos
         self.conectar_eventos()
         self.cargar_imagenes()
+        self.btn_abrir.hide()
        
 
     # ----------------------------------
@@ -125,6 +128,52 @@ class Frm_Galeria(QWidget):
         self.btn_modificar.clicked.connect(
             self.modificar_imagen
         )
+
+        self.btn_abrir.clicked.connect(
+            self.abrir_imagen_seleccionada
+        )
+
+    def set_modo_seleccion(self, activo):
+        self._modo_seleccion = activo
+        self.listWidget_imagenes.clearSelection()
+        self.listWidget_imagenes.setSelectionMode(
+            self.listWidget_imagenes.SelectionMode.SingleSelection
+            if activo
+            else self.listWidget_imagenes.SelectionMode.ExtendedSelection
+        )
+
+        for boton in (
+            self.btn_agregar,
+            self.btn_eliminar,
+            self.btn_modificar,
+            self.btn_guardar,
+        ):
+            boton.setVisible(not activo)
+
+        self.btn_abrir.setVisible(activo)
+        self.actualizar_seleccion_tarjetas()
+
+    def abrir_imagen_seleccionada(self):
+        items = self.listWidget_imagenes.selectedItems()
+        if len(items) != 1:
+            QMessageBox.warning(
+                self,
+                "Seleccionar imagen",
+                "Selecciona una imagen para abrir.",
+            )
+            return
+
+        ruta = Path(items[0].data(Qt.ItemDataRole.UserRole))
+        if not ruta.is_file():
+            QMessageBox.warning(
+                self,
+                "Imagen no encontrada",
+                "La imagen seleccionada ya no existe.",
+            )
+            self.cargar_imagenes()
+            return
+
+        self.imagen_seleccionada.emit(str(ruta))
 
     # ----------------------------------
     # OBTENER IMÁGENES
@@ -221,6 +270,10 @@ class Frm_Galeria(QWidget):
 
         self.btn_agregar.setEnabled(
             not self.listWidget_imagenes.selectedItems()
+        )
+        self.btn_abrir.setEnabled(
+            self._modo_seleccion
+            and len(self.listWidget_imagenes.selectedItems()) == 1
         )
 
         for i in range(self.listWidget_imagenes.count()):
