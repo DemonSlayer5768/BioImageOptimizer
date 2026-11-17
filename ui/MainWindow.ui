@@ -310,94 +310,7 @@ QPushButton:disabled {
          </property>
          <property name="icon">
           <iconset>
-           <normaloff>../resources/Icons/Icons_blancos/folder.png</normaloff>../resources/Icons/Icons_blancos/folder.png</iconset>
-         </property>
-         <property name="iconSize">
-          <size>
-           <width>25</width>
-           <height>25</height>
-          </size>
-         </property>
-         <property name="default">
-          <bool>false</bool>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="btn_optimizacion">
-         <property name="enabled">
-          <bool>true</bool>
-         </property>
-         <property name="font">
-          <font>
-           <family>Arial</family>
-           <pointsize>-1</pointsize>
-           <fontweight>DemiBold</fontweight>
-          </font>
-         </property>
-         <property name="cursor">
-          <cursorShape>PointingHandCursor</cursorShape>
-         </property>
-         <property name="layoutDirection">
-          <enum>Qt::LayoutDirection::LeftToRight</enum>
-         </property>
-         <property name="autoFillBackground">
-          <bool>false</bool>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">
-QPushButton {
-    background-color: #111a2e;
-    color: #c8d3e0;
-
-    border: 1px solid #1b2a41;
-    border-radius: 8px;
-
-    padding: 10px 14px;
-
-    font-size: 14px;
-    font-weight: 600;
-
-    text-align: left;
-}
-
-/* Hover */
-QPushButton:hover {
-    background-color: #1b2a41;
-    border: 1px solid #2f3e56;
-    color: #65D6C6;
-}
-
-/* Pressed */
-QPushButton:pressed {
-    background-color: #0b0f1a;
-    border: 1px solid #65D6C6;
-
-    padding-top: 11px;
-    padding-bottom: 9px;
-}
-
-/* Checked / Selected */
-QPushButton:checked {
-    background-color: #1b2a41;
-    border: 1px solid #65D6C6;
-    color: #65D6C6;
-}
-
-/* Disabled */
-QPushButton:disabled {
-    background-color: #0b0f1a;
-    color: #59677a;
-    border: 1px solid #111a2e;
-}
-</string>
-         </property>
-         <property name="text">
-          <string>Optimización</string>
-         </property>
-         <property name="icon">
-          <iconset>
-           <normaloff>../resources/Icons/Icons_blancos/optimizacion.png</normaloff>../resources/Icons/Icons_blancos/optimizacion.png</iconset>
+           <normaloff>../resources/Icons/Icons_blancos/image.png</normaloff>../resources/Icons/Icons_blancos/image.png</iconset>
          </property>
          <property name="iconSize">
           <size>
@@ -585,93 +498,6 @@ QPushButton:disabled {
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="btn_procesamiento">
-         <property name="enabled">
-          <bool>true</bool>
-         </property>
-         <property name="font">
-          <font>
-           <family>Arial</family>
-           <pointsize>-1</pointsize>
-           <fontweight>DemiBold</fontweight>
-          </font>
-         </property>
-         <property name="cursor">
-          <cursorShape>PointingHandCursor</cursorShape>
-         </property>
-         <property name="layoutDirection">
-          <enum>Qt::LayoutDirection::LeftToRight</enum>
-         </property>
-         <property name="autoFillBackground">
-          <bool>false</bool>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">
-QPushButton {
-    background-color: #111a2e;
-    color: #c8d3e0;
-
-    border: 1px solid #1b2a41;
-    border-radius: 8px;
-
-    padding: 10px 14px;
-
-    font-size: 14px;
-    font-weight: 600;
-
-    text-align: left;
-}
-
-/* Hover */
-QPushButton:hover {
-    background-color: #1b2a41;
-    border: 1px solid #2f3e56;
-    color: #65D6C6;
-}
-
-/* Pressed */
-QPushButton:pressed {
-    background-color: #0b0f1a;
-    border: 1px solid #65D6C6;
-
-    padding-top: 11px;
-    padding-bottom: 9px;
-}
-
-/* Checked / Selected */
-QPushButton:checked {
-    background-color: #1b2a41;
-    border: 1px solid #65D6C6;
-    color: #65D6C6;
-}
-
-/* Disabled */
-QPushButton:disabled {
-    background-color: #0b0f1a;
-    color: #59677a;
-    border: 1px solid #111a2e;
-}
-</string>
-         </property>
-         <property name="text">
-          <string>Procesamiento</string>
-         </property>
-         <property name="icon">
-          <iconset>
-           <normaloff>../resources/Icons/Icons_blancos/procesamiento.png</normaloff>../resources/Icons/Icons_blancos/procesamiento.png</iconset>
-         </property>
-         <property name="iconSize">
-          <size>
-           <width>25</width>
-           <height>25</height>
-          </size>
-         </property>
-         <property name="default">
-          <bool>false</bool>
-         </property>
-        </widget>
-       </item>
-       <item>
         <widget class="QPushButton" name="btn_restauracion">
          <property name="enabled">
           <bool>true</bool>
@@ -746,6 +572,180 @@ QPushButton:disabled {
          <property name="icon">
           <iconset>
            <normaloff>../resources/Icons/Icons_blancos/restauracion.png</normaloff>../resources/Icons/Icons_blancos/restauracion.png</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>25</width>
+           <height>25</height>
+          </size>
+         </property>
+         <property name="default">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btn_optimizacion">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="font">
+          <font>
+           <family>Arial</family>
+           <pointsize>-1</pointsize>
+           <fontweight>DemiBold</fontweight>
+          </font>
+         </property>
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
+         <property name="layoutDirection">
+          <enum>Qt::LayoutDirection::LeftToRight</enum>
+         </property>
+         <property name="autoFillBackground">
+          <bool>false</bool>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">
+QPushButton {
+    background-color: #111a2e;
+    color: #c8d3e0;
+
+    border: 1px solid #1b2a41;
+    border-radius: 8px;
+
+    padding: 10px 14px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    text-align: left;
+}
+
+/* Hover */
+QPushButton:hover {
+    background-color: #1b2a41;
+    border: 1px solid #2f3e56;
+    color: #65D6C6;
+}
+
+/* Pressed */
+QPushButton:pressed {
+    background-color: #0b0f1a;
+    border: 1px solid #65D6C6;
+
+    padding-top: 11px;
+    padding-bottom: 9px;
+}
+
+/* Checked / Selected */
+QPushButton:checked {
+    background-color: #1b2a41;
+    border: 1px solid #65D6C6;
+    color: #65D6C6;
+}
+
+/* Disabled */
+QPushButton:disabled {
+    background-color: #0b0f1a;
+    color: #59677a;
+    border: 1px solid #111a2e;
+}
+</string>
+         </property>
+         <property name="text">
+          <string>Optimización</string>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normaloff>../resources/Icons/Icons_blancos/optimizacion.png</normaloff>../resources/Icons/Icons_blancos/optimizacion.png</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>25</width>
+           <height>25</height>
+          </size>
+         </property>
+         <property name="default">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btn_procesamiento">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="font">
+          <font>
+           <family>Arial</family>
+           <pointsize>-1</pointsize>
+           <fontweight>DemiBold</fontweight>
+          </font>
+         </property>
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
+         <property name="layoutDirection">
+          <enum>Qt::LayoutDirection::LeftToRight</enum>
+         </property>
+         <property name="autoFillBackground">
+          <bool>false</bool>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">
+QPushButton {
+    background-color: #111a2e;
+    color: #c8d3e0;
+
+    border: 1px solid #1b2a41;
+    border-radius: 8px;
+
+    padding: 10px 14px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    text-align: left;
+}
+
+/* Hover */
+QPushButton:hover {
+    background-color: #1b2a41;
+    border: 1px solid #2f3e56;
+    color: #65D6C6;
+}
+
+/* Pressed */
+QPushButton:pressed {
+    background-color: #0b0f1a;
+    border: 1px solid #65D6C6;
+
+    padding-top: 11px;
+    padding-bottom: 9px;
+}
+
+/* Checked / Selected */
+QPushButton:checked {
+    background-color: #1b2a41;
+    border: 1px solid #65D6C6;
+    color: #65D6C6;
+}
+
+/* Disabled */
+QPushButton:disabled {
+    background-color: #0b0f1a;
+    color: #59677a;
+    border: 1px solid #111a2e;
+}
+</string>
+         </property>
+         <property name="text">
+          <string>Procesamiento</string>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normaloff>../resources/Icons/Icons_blancos/procesamiento.png</normaloff>../resources/Icons/Icons_blancos/procesamiento.png</iconset>
          </property>
          <property name="iconSize">
           <size>

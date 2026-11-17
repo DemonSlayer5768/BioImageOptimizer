@@ -19,6 +19,16 @@ La interfaz de BioImage Optimizer utiliza una paleta oscura con tonalidades azul
 | Typography | Texto principal e iconos                      | `#c8d3e0`  |
 | Accent     | Indicadores, selección y acciones principales | `#65D6C6`  |
 
+### Colores de componentes
+
+| Nombre        | color   | dissabled |
+| ------------- | ------- | --------- |
+| btn_eliminar  | #EF5350 | #2F3E56   |
+| btn_agregar   | #388E3C | #2F3E56   |
+| btn_modificar | #42A5F5 | #2F3E56   |
+| btn_guardar   | #FFB74D | #2F3E56   |
+| cmbs y reset  | #65D6C6 | #2F3E56   |
+
 ### Referencia visual
 
 | Color      | Vista previa                         | HEX       |

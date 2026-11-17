@@ -288,13 +288,13 @@ QComboBox::drop-down {
     background-color: rgba(101, 214, 198, 0.05);
 }
 QComboBox::down-arrow {
-    image: url(&quot;D:/Git/BioImageOptimizer/resources/Icons/Icons_Verdes/chevron_down.png&quot;);
+    image: url(&quot;D:/Git/BioImageOptimizer/resources/Icons/Icons_aqua/chevron_down.png&quot;);
     width: 16px;
     height: 16px;
 }
 
 QComboBox::down-arrow:on {
-    image: url(&quot;D:/Git/BioImageOptimizer/resources/Icons/Icons_Verdes/chevron_down.png&quot;);
+    image: url(&quot;D:/Git/BioImageOptimizer/resources/Icons/Icons_aqua/chevron_down.png&quot;);
 }
 
 QComboBox::down-arrow:disabled {
@@ -443,7 +443,7 @@ QListWidget#listWidget_imagenes::item:selected {
           </widget>
          </item>
          <item>
-          <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,4,1,1">
+          <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,2,1,1,1">
            <property name="spacing">
             <number>9</number>
            </property>
@@ -492,7 +492,7 @@ QPushButton#btn_eliminar:pressed {
              </property>
              <property name="icon">
               <iconset>
-               <normaloff>C:/Users/Usuario/.designer/Icons/Icons_Verdes/play-button-arrowhead.png</normaloff>C:/Users/Usuario/.designer/Icons/Icons_Verdes/play-button-arrowhead.png</iconset>
+               <normaloff>../../resources/Icons/Icons_rojos/delete.png</normaloff>../../resources/Icons/Icons_rojos/delete.png</iconset>
              </property>
              <property name="iconSize">
               <size>
@@ -519,6 +519,53 @@ QPushButton#btn_eliminar:pressed {
             </spacer>
            </item>
            <item>
+            <widget class="QPushButton" name="btn_guardar">
+             <property name="cursor">
+              <cursorShape>PointingHandCursor</cursorShape>
+             </property>
+             <property name="layoutDirection">
+              <enum>Qt::LayoutDirection::RightToLeft</enum>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton#btn_guardar{
+    border: 1px solid rgba(255, 183, 77, 0.45);
+    border-radius: 12px;
+    color: #FFB74D;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 4px 12px;
+    min-height: 22px;
+}
+QPushButton#btn_guardar:hover {
+    background-color: rgba(255, 183, 77, 0.25);
+    border: 1px solid #FFB74D;
+}
+QPushButton#btn_guardar:pressed {
+    background-color: #F57C00;
+    color: #ffffff;
+}
+QPushButton#btn_guardar:disabled {
+    background-color: rgba(47, 62, 86, 0.35);
+    border: 1px solid rgba(47, 62, 86, 0.6);
+    color: #64748b;
+}</string>
+             </property>
+             <property name="text">
+              <string>Guardar</string>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normaloff>../../resources/Icons/Icons_amarillos/saved.png</normaloff>../../resources/Icons/Icons_amarillos/saved.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>20</width>
+               <height>20</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+           <item>
             <widget class="QPushButton" name="btn_modificar">
              <property name="cursor">
               <cursorShape>PointingHandCursor</cursorShape>
@@ -528,7 +575,7 @@ QPushButton#btn_eliminar:pressed {
              </property>
              <property name="styleSheet">
               <string notr="true">QPushButton#btn_modificar {
-    background-color: rgba(66, 165, 245, 0.13);
+    background-color: transparent;
     border: 1px solid rgba(66, 165, 245, 0.45);
     border-radius: 12px;
     color: #42A5F5;
@@ -553,7 +600,7 @@ QPushButton#btn_modificar:pressed {
              </property>
              <property name="icon">
               <iconset>
-               <normaloff>C:/Users/Usuario/.designer/Icons/Icons_Verdes/play-button-arrowhead.png</normaloff>C:/Users/Usuario/.designer/Icons/Icons_Verdes/play-button-arrowhead.png</iconset>
+               <normaloff>../../resources/Icons/Icons_azules/edit.png</normaloff>../../resources/Icons/Icons_azules/edit.png</iconset>
              </property>
              <property name="iconSize">
               <size>
@@ -576,7 +623,7 @@ QPushButton#btn_modificar:pressed {
              </property>
              <property name="styleSheet">
               <string notr="true">QPushButton#btn_agregar {
-    background-color: rgba(76, 175, 80, 0.13);
+    background-color: transparent;
     border: 1px solid rgba(76, 175, 80, 0.45);
     border-radius: 12px;
     color: #4CAF50;
@@ -605,7 +652,7 @@ QPushButton#btn_agregar:disabled {
              </property>
              <property name="icon">
               <iconset>
-               <normaloff>C:/Users/Usuario/.designer/Icons/Icons_Verdes/play-button-arrowhead.png</normaloff>C:/Users/Usuario/.designer/Icons/Icons_Verdes/play-button-arrowhead.png</iconset>
+               <normaloff>../../resources/Icons/Icons_verdes/add_icon.png</normaloff>../../resources/Icons/Icons_verdes/add_icon.png</iconset>
              </property>
              <property name="iconSize">
               <size>
