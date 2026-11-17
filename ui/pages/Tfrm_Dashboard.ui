@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>954</width>
-    <height>828</height>
+    <width>950</width>
+    <height>829</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -535,7 +535,7 @@ font-weight: 600;
                  <enum>Qt::ToolButtonStyle::ToolButtonTextUnderIcon</enum>
                 </property>
                 <property name="cssClass" stdset="0">
-                 <string>Primary</string>
+                 <string>PrimaryButton</string>
                 </property>
                </widget>
               </item>
@@ -592,7 +592,7 @@ font-weight: 600;
                  <enum>Qt::ToolButtonStyle::ToolButtonTextUnderIcon</enum>
                 </property>
                 <property name="cssClass" stdset="0">
-                 <string>Primary</string>
+                 <string>PrimaryButton</string>
                 </property>
                </widget>
               </item>
@@ -636,7 +636,7 @@ font-weight: 600;
                  <enum>Qt::ToolButtonStyle::ToolButtonTextUnderIcon</enum>
                 </property>
                 <property name="cssClass" stdset="0">
-                 <string>Primary</string>
+                 <string>PrimaryButton</string>
                 </property>
                </widget>
               </item>
