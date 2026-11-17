@@ -383,6 +383,9 @@ QPushButton#btn_eliminar:disabled {
                 </item>
                 <item row="1" column="0">
                  <widget class="QCheckBox" name="chk_ver_original">
+                  <property name="cursor">
+                   <cursorShape>PointingHandCursor</cursorShape>
+                  </property>
                   <property name="styleSheet">
                    <string notr="true">/* ===== CheckBox ===== */
 QCheckBox {
@@ -553,7 +556,7 @@ QDoubleSpinBox::up-arrow:disabled, QDoubleSpinBox::down-arrow:disabled {
                 <property name="title">
                  <string>Parámetros adaptativos</string>
                 </property>
-                <layout class="QGridLayout" name="gridLayout" rowstretch="0,0,0,0,0,0,0,0,0,0,0" columnstretch="0,0,0" columnminimumwidth="0,0,0">
+                <layout class="QGridLayout" name="gridLayout" rowstretch="0,0,0,0,0,0,0,0,0,0" columnstretch="0,0,0" columnminimumwidth="0,0,0">
                  <property name="leftMargin">
                   <number>0</number>
                  </property>
@@ -791,34 +794,6 @@ QComboBox QAbstractItemView::item:hover {
                     </widget>
                    </item>
                    <item>
-                    <widget class="QCheckBox" name="chk_mascara">
-                     <property name="enabled">
-                      <bool>true</bool>
-                     </property>
-                     <property name="minimumSize">
-                      <size>
-                       <width>0</width>
-                       <height>28</height>
-                      </size>
-                     </property>
-                     <property name="cursor">
-                      <cursorShape>PointingHandCursor</cursorShape>
-                     </property>
-                     <property name="layoutDirection">
-                      <enum>Qt::LayoutDirection::LeftToRight</enum>
-                     </property>
-                     <property name="styleSheet">
-                      <string notr="true"/>
-                     </property>
-                     <property name="text">
-                      <string>Usar máscara previa</string>
-                     </property>
-                     <property name="checked">
-                      <bool>false</bool>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
                     <widget class="QCheckBox" name="chk_preview">
                      <property name="enabled">
                       <bool>true</bool>
@@ -840,6 +815,37 @@ QComboBox QAbstractItemView::item:hover {
                      </property>
                      <property name="text">
                       <string>Vista previa en vivo</string>
+                     </property>
+                     <property name="checked">
+                      <bool>false</bool>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QCheckBox" name="chk_mascara">
+                     <property name="enabled">
+                      <bool>false</bool>
+                     </property>
+                     <property name="minimumSize">
+                      <size>
+                       <width>0</width>
+                       <height>28</height>
+                      </size>
+                     </property>
+                     <property name="cursor">
+                      <cursorShape>PointingHandCursor</cursorShape>
+                     </property>
+                     <property name="layoutDirection">
+                      <enum>Qt::LayoutDirection::LeftToRight</enum>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true"/>
+                     </property>
+                     <property name="text">
+                      <string>Usar máscara previa </string>
+                     </property>
+                     <property name="checkable">
+                      <bool>false</bool>
                      </property>
                      <property name="checked">
                       <bool>false</bool>
@@ -922,6 +928,12 @@ QSlider::handle:horizontal:disabled {
               </item>
               <item>
                <layout class="QHBoxLayout" name="horizontalLayout_2">
+                <property name="topMargin">
+                 <number>9</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>9</number>
+                </property>
                 <item>
                  <widget class="QPushButton" name="btn_reset">
                   <property name="cursor">

@@ -1,7 +1,7 @@
 
 from pathlib import Path
 import shutil
-from ui.components.tarjeta_imagen import TarjetaImagen
+from resources.styles.components.tarjeta_imagen import TarjetaImagen
 
 from PyQt6 import uic
 from PyQt6.QtWidgets import (

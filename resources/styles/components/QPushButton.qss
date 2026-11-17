@@ -1,0 +1,90 @@
+
+/* =====================================
+   PRIMARY BUTTON
+===================================== */
+
+QPushButton[cssClass="PrimaryButton"][variant="btn_green"] {
+    background-color: #388E3C;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 14px;
+}
+
+QPushButton[cssClass="PrimaryButton"][variant="btn_blue"] {
+    background-color: #42A5F5;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 14px;
+}
+
+QPushButton[cssClass="PrimaryButton"][variant="btn_yellow"] {
+    background-color: #FFB74D;
+    color: #0b0f1a;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 14px;
+}
+
+QPushButton[cssClass="PrimaryButton"][variant="btn_aqua"] {
+    background-color: #65D6C6;
+    color: #0b0f1a;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 14px;
+}
+
+QPushButton[cssClass="PrimaryButton"][variant="btn_red"] {
+    background-color: #EF5350;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 14px;
+}
+
+/* Estado deshabilitado */
+
+QPushButton[cssClass="PrimaryButton"]:disabled {
+    background-color: #2F3E56;
+    color: #8996A8;
+    border: none;
+}
+
+
+QToolButton[cssClass="Primary"] {
+    background-color: #1b2a41;
+    color: #c8d3e0;
+
+    border: 1px solid #2f3e56;
+    border-radius: 12px;
+	text-align: center;
+	padding: 12px 8px;
+
+   /* padding: 12px 10px 10px 10px; más espacio arriba para el icono */
+    font-size: 12px;
+    font-weight: 600;
+
+ 
+    icon-size: 24px;               /* tamaño del icono */
+}
+
+/* Hover */
+QToolButton[cssClass="Primary"]:hover {
+    background-color: #243552;
+    border: 1px solid #65D6C6;
+    color: #65D6C6;
+}
+
+/* Pressed */
+QToolButton[cssClass="Primary"]:pressed {
+    background-color: #0f172a;
+    border: 1px solid #65D6C6;
+}
+
+/* Disabled */
+QToolButton[cssClass="Primary"]:disabled {
+    background-color: #111a2e;
+    color: #59677a;
+    border: 1px solid #1b2a41;
+}

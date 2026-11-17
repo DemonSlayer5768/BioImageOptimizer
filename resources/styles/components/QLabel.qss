@@ -1,0 +1,42 @@
+
+QLabel[cssClass="Tittle"] {
+    font-size: 28px;
+    font-weight: 800;
+    font-family: "Segoe UI";
+    color: #c8d3e0;
+    
+}
+
+
+QLabel[cssClass="Description"] {
+    font-size: 20px;
+    font-weight: 800;
+    font-family: "Segoe UI";
+    color: rgb(161, 161, 161);  
+    
+}
+
+
+QLabel[cssClass="Grande"]{
+    font-size: 20px;
+    font-weight: 800;
+    font-family: "Segoe UI";
+    color: #c8d3e0;
+
+}
+
+QLabel[cssClass="Mediana"]{
+    font-size: 16px;
+    font-weight: 800;
+    font-family: "Segoe UI";
+    color: #c8d3e0;
+
+}
+
+QLabel[cssClass="Pequena"]{
+    font-size: 12px;
+    font-weight: 800;
+    font-family: "Segoe UI";
+    color: #c8d3e0;
+
+}

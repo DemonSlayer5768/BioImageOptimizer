@@ -17,7 +17,7 @@ class Frm_Dashboard(QWidget):
     # Conectar botones del Dashboard
     def conectar_eventos(self):
 
-        self.Tbtn_Iportar_Imagenes.clicked.connect(
+        self.Tbtn_Importar_Imagenes.clicked.connect(
             self.importar_imagenes
         )
 

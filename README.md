@@ -12,22 +12,22 @@ La interfaz de BioImage Optimizer utiliza una paleta oscura con tonalidades azul
 
 | Nombre     | Uso                                           | Código HEX |
 | ---------- | --------------------------------------------- | ---------- |
-| Background | Fondo general y ventanas                      | `#0b0f1a`  |
-| Surface    | Sidebar, tarjetas y paneles                   | `#111a2e`  |
-| Elevated   | Elementos internos y estados Hover            | `#1b2a41`  |
-| Border     | Bordes, divisores y elementos activos         | `#2f3e56`  |
-| Typography | Texto principal e iconos                      | `#c8d3e0`  |
-| Accent     | Indicadores, selección y acciones principales | `#65D6C6`  |
+| Background | Fondo general y ventanas                      | #0b0f1a    |
+| Surface    | Sidebar, tarjetas y paneles                   | #111a2e    |
+| Elevated   | Elementos internos y estados Hover            | #1b2a41    |
+| Border     | Bordes, divisores y elementos activos         | #2f3e56    |
+| Typography | Texto principal e iconos                      | #c8d3e0    |
+| Accent     | Indicadores, selección y acciones principales | #65D6C6    |
 
-### Colores de componentes
+### Colores de botones
 
-| Nombre        | color   | dissabled |
-| ------------- | ------- | --------- |
-| btn_eliminar  | #EF5350 | #2F3E56   |
-| btn_agregar   | #388E3C | #2F3E56   |
-| btn_modificar | #42A5F5 | #2F3E56   |
-| btn_guardar   | #FFB74D | #2F3E56   |
-| cmbs y reset  | #65D6C6 | #2F3E56   |
+| Nombre        | Variant    | uso           | color   | dissabled |
+| ------------- | ---------- | ------------- | ------- | --------- | --- |
+| PrimaryButton | btn_green  | btn_agregar   | #388E3C | #2F3E56   |
+| PrimaryButton | btn_blue   | btn_modificar | #42A5F5 | #2F3E56   |
+| PrimaryButton | btn_yellow | btn_guardar   | #FFB74D | #2F3E56   |     |
+| PrimaryButton | btn_aqua   | cmbs y reset  | #65D6C6 | #2F3E56   |
+| PrimaryButton | btn_red    | btn_eliminar  | #EF5350 | #2F3E56   |
 
 ### Referencia visual
 

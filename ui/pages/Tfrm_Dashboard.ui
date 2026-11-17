@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>950</width>
-    <height>820</height>
+    <width>954</width>
+    <height>828</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -18,6 +18,9 @@
   </property>
   <property name="windowTitle">
    <string>Form</string>
+  </property>
+  <property name="layoutDirection">
+   <enum>Qt::LayoutDirection::RightToLeft</enum>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_2">
    <property name="spacing">
@@ -36,22 +39,27 @@
     <number>0</number>
    </property>
    <item>
-    <widget class="QFrame" name="frame_Dashboard">
+    <widget class="QFrame" name="Panel_container">
      <property name="minimumSize">
       <size>
        <width>950</width>
        <height>800</height>
       </size>
      </property>
+     <property name="accessibleName">
+      <string>BackGround</string>
+     </property>
      <property name="styleSheet">
-      <string notr="true">/*background-color: rgb(7, 16, 20);*/
-background-color: rgb(11, 15, 26);</string>
+      <string notr="true"/>
      </property>
      <property name="frameShape">
       <enum>QFrame::Shape::StyledPanel</enum>
      </property>
      <property name="frameShadow">
       <enum>QFrame::Shadow::Raised</enum>
+     </property>
+     <property name="cssClass" stdset="0">
+      <string>Background</string>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout" stretch="1,2,3,6">
       <property name="spacing">
@@ -70,7 +78,7 @@ background-color: rgb(11, 15, 26);</string>
        <number>0</number>
       </property>
       <item>
-       <widget class="QFrame" name="frame_1">
+       <widget class="QFrame" name="Panel_Head">
         <property name="maximumSize">
          <size>
           <width>16777215</width>
@@ -80,66 +88,73 @@ background-color: rgb(11, 15, 26);</string>
         <property name="toolTip">
          <string/>
         </property>
+        <property name="layoutDirection">
+         <enum>Qt::LayoutDirection::LeftToRight</enum>
+        </property>
         <property name="frameShape">
          <enum>QFrame::Shape::NoFrame</enum>
         </property>
         <property name="frameShadow">
          <enum>QFrame::Shadow::Raised</enum>
         </property>
-        <widget class="QLabel" name="label_Nombre">
-         <property name="geometry">
-          <rect>
-           <x>30</x>
-           <y>10</y>
-           <width>151</width>
-           <height>30</height>
-          </rect>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">font: 700 20pt &quot;Arial&quot;;</string>
-         </property>
-         <property name="text">
-          <string>Dashboard</string>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label">
-         <property name="geometry">
-          <rect>
-           <x>30</x>
-           <y>40</y>
-           <width>171</width>
-           <height>21</height>
-          </rect>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">font: 12pt &quot;Arial&quot;;
-color: rgb(161, 161, 161);</string>
-         </property>
-         <property name="text">
-          <string>Resumen General</string>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label_2">
-         <property name="geometry">
-          <rect>
-           <x>8</x>
-           <y>11</y>
-           <width>21</width>
-           <height>50</height>
-          </rect>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">color : rgb(101, 214, 198);
-font: 72pt &quot;Segoe UI&quot;;</string>
-         </property>
-         <property name="text">
-          <string>l</string>
-         </property>
-        </widget>
+        <property name="cssClass" stdset="0">
+         <string>Surface</string>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_5">
+         <item>
+          <widget class="QFrame" name="Separator">
+           <property name="maximumSize">
+            <size>
+             <width>10</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">background-color : rgb(101, 214, 198);</string>
+           </property>
+           <property name="frameShape">
+            <enum>QFrame::Shape::NoFrame</enum>
+           </property>
+           <property name="frameShadow">
+            <enum>QFrame::Shadow::Plain</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <layout class="QVBoxLayout" name="Layout_vertical">
+           <item>
+            <widget class="QLabel" name="lb_titulo">
+             <property name="styleSheet">
+              <string notr="true"/>
+             </property>
+             <property name="text">
+              <string>Dashboard</string>
+             </property>
+             <property name="cssClass" stdset="0">
+              <string>Tittle</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="lb_descripcion">
+             <property name="styleSheet">
+              <string notr="true"/>
+             </property>
+             <property name="text">
+              <string>Resumen General</string>
+             </property>
+             <property name="cssClass" stdset="0">
+              <string>Description</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
        </widget>
       </item>
       <item>
-       <widget class="QFrame" name="frame_2">
+       <widget class="QFrame" name="Panel_1">
         <property name="minimumSize">
          <size>
           <width>0</width>
@@ -158,6 +173,9 @@ font: 72pt &quot;Segoe UI&quot;;</string>
         <property name="frameShadow">
          <enum>QFrame::Shadow::Raised</enum>
         </property>
+        <property name="cssClass" stdset="0">
+         <string>Surface</string>
+        </property>
         <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="1,1">
          <property name="leftMargin">
           <number>9</number>
@@ -169,10 +187,12 @@ font: 72pt &quot;Segoe UI&quot;;</string>
           <number>0</number>
          </property>
          <item>
-          <widget class="QFrame" name="frame_ImgR">
+          <widget class="QFrame" name="Card_cantidad_imgs">
+           <property name="layoutDirection">
+            <enum>Qt::LayoutDirection::LeftToRight</enum>
+           </property>
            <property name="styleSheet">
-            <string notr="true">background-color: rgb(17, 26, 46);
-border-radius: 20px;</string>
+            <string notr="true"/>
            </property>
            <property name="frameShape">
             <enum>QFrame::Shape::StyledPanel</enum>
@@ -180,9 +200,12 @@ border-radius: 20px;</string>
            <property name="frameShadow">
             <enum>QFrame::Shadow::Raised</enum>
            </property>
+           <property name="cssClass" stdset="0">
+            <string>Card</string>
+           </property>
            <layout class="QVBoxLayout" name="verticalLayout_6">
             <item>
-             <widget class="QLabel" name="label_4">
+             <widget class="QLabel" name="lb_img">
               <property name="minimumSize">
                <size>
                 <width>28</width>
@@ -213,22 +236,17 @@ border-radius: 20px;</string>
              <widget class="QLabel" name="lb_Img_count">
               <property name="font">
                <font>
-                <pointsize>-1</pointsize>
-                <fontweight>ExtraBold</fontweight>
+                <family>Arial</family>
+                <pointsize>28</pointsize>
+                <italic>false</italic>
+                <fontweight>DemiBold</fontweight>
                </font>
               </property>
               <property name="styleSheet">
-               <string notr="true">QLabel{
-    background-color: transparent;
-    color: #65D6C6;
-
-    border: none;
-
-    font-size: 32px;
-    font-weight: 800;
-
-    padding: 0px;
-}</string>
+               <string notr="true">color: rgb(101, 214, 198);
+font: 700 28pt &quot;Arial&quot;;
+font-weight: 600;
+</string>
               </property>
               <property name="text">
                <string>0</string>
@@ -236,31 +254,21 @@ border-radius: 20px;</string>
              </widget>
             </item>
             <item>
-             <widget class="QLabel" name="label_3">
+             <widget class="QLabel" name="lb_primary_2">
               <property name="font">
                <font>
-                <pointsize>-1</pointsize>
                 <italic>false</italic>
                 <bold>true</bold>
                </font>
               </property>
               <property name="styleSheet">
-               <string notr="true">
-QLabel{
-    background-color: transparent;
-    color: #c8d3e0;
-
-    border: none;
-
-    font-size: 20px;
-    font-weight: 700;
-
-    padding: 4px 0px;
-}
-</string>
+               <string notr="true"/>
               </property>
               <property name="text">
-               <string>Cantidad de Imagenes</string>
+               <string>Imagenes</string>
+              </property>
+              <property name="cssClass" stdset="0">
+               <string>Grande</string>
               </property>
              </widget>
             </item>
@@ -268,10 +276,12 @@ QLabel{
           </widget>
          </item>
          <item>
-          <widget class="QFrame" name="frame_ExpR">
+          <widget class="QFrame" name="Card_cantidad_procesos">
+           <property name="layoutDirection">
+            <enum>Qt::LayoutDirection::LeftToRight</enum>
+           </property>
            <property name="styleSheet">
-            <string notr="true">background-color: rgb(17, 26, 46);
-border-radius: 20px;</string>
+            <string notr="true"/>
            </property>
            <property name="frameShape">
             <enum>QFrame::Shape::StyledPanel</enum>
@@ -279,9 +289,12 @@ border-radius: 20px;</string>
            <property name="frameShadow">
             <enum>QFrame::Shadow::Raised</enum>
            </property>
+           <property name="cssClass" stdset="0">
+            <string>Card</string>
+           </property>
            <layout class="QVBoxLayout" name="verticalLayout_5">
             <item>
-             <widget class="QLabel" name="label_5">
+             <widget class="QLabel" name="lb_img_3">
               <property name="minimumSize">
                <size>
                 <width>28</width>
@@ -298,7 +311,7 @@ border-radius: 20px;</string>
                <string/>
               </property>
               <property name="pixmap">
-               <pixmap>../../resources/Icons/Icons_aqua/flask_experiment.png</pixmap>
+               <pixmap>../../resources/Icons/Icons_aqua/folder.png</pixmap>
               </property>
               <property name="scaledContents">
                <bool>true</bool>
@@ -312,22 +325,17 @@ border-radius: 20px;</string>
              <widget class="QLabel" name="lb_exp_count">
               <property name="font">
                <font>
-                <pointsize>-1</pointsize>
-                <fontweight>ExtraBold</fontweight>
+                <family>Arial</family>
+                <pointsize>28</pointsize>
+                <italic>false</italic>
+                <fontweight>DemiBold</fontweight>
                </font>
               </property>
               <property name="styleSheet">
-               <string notr="true">QLabel{
-    background-color: transparent;
-    color: #65D6C6;
-
-    border: none;
-
-    font-size: 32px;
-    font-weight: 800;
-
-    padding: 0px;
-}</string>
+               <string notr="true">color: rgb(101, 214, 198);
+font: 700 28pt &quot;Arial&quot;;
+font-weight: 600;
+</string>
               </property>
               <property name="text">
                <string>0</string>
@@ -335,31 +343,24 @@ border-radius: 20px;</string>
              </widget>
             </item>
             <item>
-             <widget class="QLabel" name="label_6">
+             <widget class="QLabel" name="lb_primary">
               <property name="font">
                <font>
-                <pointsize>-1</pointsize>
                 <italic>false</italic>
                 <bold>true</bold>
                </font>
               </property>
+              <property name="layoutDirection">
+               <enum>Qt::LayoutDirection::LeftToRight</enum>
+              </property>
               <property name="styleSheet">
-               <string notr="true">
-QLabel{
-    background-color: transparent;
-    color: #c8d3e0;
-
-    border: none;
-
-    font-size: 20px;
-    font-weight: 700;
-
-    padding: 4px 0px;
-}
-</string>
+               <string notr="true"/>
               </property>
               <property name="text">
-               <string>Procesos Realizados</string>
+               <string>Imagenes procesadas</string>
+              </property>
+              <property name="cssClass" stdset="0">
+               <string>Grande</string>
               </property>
              </widget>
             </item>
@@ -370,7 +371,7 @@ QLabel{
        </widget>
       </item>
       <item>
-       <widget class="QFrame" name="frame_3">
+       <widget class="QFrame" name="Panel_2">
         <property name="maximumSize">
          <size>
           <width>16777215</width>
@@ -382,6 +383,9 @@ QLabel{
         </property>
         <property name="frameShadow">
          <enum>QFrame::Shadow::Raised</enum>
+        </property>
+        <property name="cssClass" stdset="0">
+         <string>Surface</string>
         </property>
         <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="0">
          <property name="leftMargin">
@@ -397,7 +401,7 @@ QLabel{
           <number>0</number>
          </property>
          <item>
-          <widget class="QFrame" name="frame_AccesosR">
+          <widget class="QFrame" name="Card_accesos_rapidos">
            <property name="maximumSize">
             <size>
              <width>16777215</width>
@@ -407,9 +411,11 @@ QLabel{
            <property name="cursor">
             <cursorShape>ArrowCursor</cursorShape>
            </property>
+           <property name="layoutDirection">
+            <enum>Qt::LayoutDirection::LeftToRight</enum>
+           </property>
            <property name="styleSheet">
-            <string notr="true">background-color: rgb(17, 26, 46);
-border-radius: 20px;</string>
+            <string notr="true"/>
            </property>
            <property name="frameShape">
             <enum>QFrame::Shape::StyledPanel</enum>
@@ -417,18 +423,12 @@ border-radius: 20px;</string>
            <property name="frameShadow">
             <enum>QFrame::Shadow::Raised</enum>
            </property>
-           <layout class="QVBoxLayout" name="verticalLayout_3" stretch="1,4">
-            <property name="spacing">
-             <number>2</number>
-            </property>
-            <property name="topMargin">
-             <number>9</number>
-            </property>
-            <property name="bottomMargin">
-             <number>0</number>
-            </property>
+           <property name="cssClass" stdset="0">
+            <string>Card</string>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_3" stretch="1,9">
             <item>
-             <layout class="QHBoxLayout" name="Layout_HeadFrame3" stretch="1,1">
+             <layout class="QHBoxLayout" name="Layout_horizontal" stretch="1,1">
               <property name="leftMargin">
                <number>9</number>
               </property>
@@ -442,7 +442,7 @@ border-radius: 20px;</string>
                <number>0</number>
               </property>
               <item>
-               <widget class="QLabel" name="label_8">
+               <widget class="QLabel" name="lb_img_2">
                 <property name="minimumSize">
                  <size>
                   <width>28</width>
@@ -470,10 +470,9 @@ border-radius: 20px;</string>
                </widget>
               </item>
               <item>
-               <widget class="QLabel" name="label_7">
+               <widget class="QLabel" name="lb_primary_4">
                 <property name="font">
                  <font>
-                  <pointsize>-1</pointsize>
                   <italic>false</italic>
                   <bold>true</bold>
                  </font>
@@ -482,297 +481,166 @@ border-radius: 20px;</string>
                  <enum>Qt::LayoutDirection::LeftToRight</enum>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">
-QLabel{
-    background-color: transparent;
-    color: #c8d3e0;
-
-    border: none;
-
-    font-size: 20px;
-    font-weight: 700;
-
-    padding: 4px 0px;
-}
-</string>
+                 <string notr="true"/>
                 </property>
                 <property name="text">
-                 <string>Accesos Rápidos</string>
+                 <string>Accesos Rapidos</string>
+                </property>
+                <property name="cssClass" stdset="0">
+                 <string>Mediana</string>
                 </property>
                </widget>
               </item>
              </layout>
             </item>
             <item>
-             <widget class="QFrame" name="frame_AccesFastButtons">
-              <property name="layoutDirection">
-               <enum>Qt::LayoutDirection::LeftToRight</enum>
-              </property>
-              <property name="frameShape">
-               <enum>QFrame::Shape::NoFrame</enum>
-              </property>
-              <property name="frameShadow">
-               <enum>QFrame::Shadow::Raised</enum>
-              </property>
-              <layout class="QHBoxLayout" name="horizontalLayout_5" stretch="3,0,3,3">
-               <property name="spacing">
-                <number>6</number>
-               </property>
-               <property name="sizeConstraint">
-                <enum>QLayout::SizeConstraint::SetMaximumSize</enum>
-               </property>
-               <property name="leftMargin">
-                <number>0</number>
-               </property>
-               <property name="rightMargin">
-                <number>0</number>
-               </property>
-               <property name="bottomMargin">
-                <number>9</number>
-               </property>
-               <item>
-                <widget class="QToolButton" name="Tbtn_Iportar_Imagenes">
-                 <property name="minimumSize">
-                  <size>
-                   <width>150</width>
-                   <height>50</height>
-                  </size>
-                 </property>
-                 <property name="maximumSize">
-                  <size>
-                   <width>300</width>
-                   <height>16777215</height>
-                  </size>
-                 </property>
-                 <property name="cursor">
-                  <cursorShape>PointingHandCursor</cursorShape>
-                 </property>
-                 <property name="accessibleDescription">
-                  <string/>
-                 </property>
-                 <property name="layoutDirection">
-                  <enum>Qt::LayoutDirection::LeftToRight</enum>
-                 </property>
-                 <property name="autoFillBackground">
-                  <bool>false</bool>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true">QToolButton {
-    background-color: #1b2a41;
-    color: #c8d3e0;
-
-    border: 1px solid #2f3e56;
-    border-radius: 12px;
-	text-align: center;
-	padding: 12px 8px;
-
-   /* padding: 12px 10px 10px 10px; más espacio arriba para el icono */
-    font-size: 12px;
-    font-weight: 600;
-
- 
-    icon-size: 24px;               /* tamaño del icono */
-}
-
-/* Hover */
-QToolButton:hover {
-    background-color: #243552;
-    border: 1px solid #65D6C6;
-    color: #65D6C6;
-}
-
-/* Pressed */
-QToolButton:pressed {
-    background-color: #0f172a;
-    border: 1px solid #65D6C6;
-}
-
-/* Disabled */
-QToolButton:disabled {
-    background-color: #111a2e;
-    color: #59677a;
-    border: 1px solid #1b2a41;
-}</string>
-                 </property>
-                 <property name="text">
-                  <string>Cargar Imagen</string>
-                 </property>
-                 <property name="icon">
-                  <iconset>
-                   <normaloff>../../resources/Icons/Icons_aqua/image.png</normaloff>../../resources/Icons/Icons_aqua/image.png</iconset>
-                 </property>
-                 <property name="toolButtonStyle">
-                  <enum>Qt::ToolButtonStyle::ToolButtonTextUnderIcon</enum>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <spacer name="horizontalSpacer_4">
-                 <property name="orientation">
-                  <enum>Qt::Orientation::Horizontal</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>40</width>
-                   <height>20</height>
-                  </size>
-                 </property>
-                </spacer>
-               </item>
-               <item>
-                <widget class="QToolButton" name="Tbtn_Resultados">
-                 <property name="minimumSize">
-                  <size>
-                   <width>150</width>
-                   <height>50</height>
-                  </size>
-                 </property>
-                 <property name="maximumSize">
-                  <size>
-                   <width>300</width>
-                   <height>16777215</height>
-                  </size>
-                 </property>
-                 <property name="cursor">
-                  <cursorShape>PointingHandCursor</cursorShape>
-                 </property>
-                 <property name="accessibleDescription">
-                  <string/>
-                 </property>
-                 <property name="layoutDirection">
-                  <enum>Qt::LayoutDirection::LeftToRight</enum>
-                 </property>
-                 <property name="autoFillBackground">
-                  <bool>false</bool>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true">QToolButton {
-    background-color: #1b2a41;
-    color: #c8d3e0;
-
-    border: 1px solid #2f3e56;
-    border-radius: 12px;
-	text-align: center;
-	padding: 12px 8px;
-
-   /* padding: 12px 10px 10px 10px; más espacio arriba para el icono */
-    font-size: 12px;
-    font-weight: 600;
-
- 
-    icon-size: 24px;               /* tamaño del icono */
-}
-
-/* Hover */
-QToolButton:hover {
-    background-color: #243552;
-    border: 1px solid #65D6C6;
-    color: #65D6C6;
-}
-
-/* Pressed */
-QToolButton:pressed {
-    background-color: #0f172a;
-    border: 1px solid #65D6C6;
-}
-
-/* Disabled */
-QToolButton:disabled {
-    background-color: #111a2e;
-    color: #59677a;
-    border: 1px solid #1b2a41;
-}</string>
-                 </property>
-                 <property name="text">
-                  <string>Ver Resultados</string>
-                 </property>
-                 <property name="icon">
-                  <iconset>
-                   <normaloff>../../resources/Icons/Icons_aqua/bar-chart.png</normaloff>../../resources/Icons/Icons_aqua/bar-chart.png</iconset>
-                 </property>
-                 <property name="toolButtonStyle">
-                  <enum>Qt::ToolButtonStyle::ToolButtonTextUnderIcon</enum>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QToolButton" name="Tbtn_CompararImgs">
-                 <property name="minimumSize">
-                  <size>
-                   <width>150</width>
-                   <height>50</height>
-                  </size>
-                 </property>
-                 <property name="maximumSize">
-                  <size>
-                   <width>300</width>
-                   <height>16777215</height>
-                  </size>
-                 </property>
-                 <property name="cursor">
-                  <cursorShape>PointingHandCursor</cursorShape>
-                 </property>
-                 <property name="accessibleDescription">
-                  <string/>
-                 </property>
-                 <property name="layoutDirection">
-                  <enum>Qt::LayoutDirection::LeftToRight</enum>
-                 </property>
-                 <property name="autoFillBackground">
-                  <bool>false</bool>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true">QToolButton {
-    background-color: #1b2a41;
-    color: #c8d3e0;
-
-    border: 1px solid #2f3e56;
-    border-radius: 12px;
-	text-align: center;
-	padding: 12px 8px;
-
-   /* padding: 12px 10px 10px 10px; más espacio arriba para el icono */
-    font-size: 12px;
-    font-weight: 600;
-
- 
-    icon-size: 24px;               /* tamaño del icono */
-}
-
-/* Hover */
-QToolButton:hover {
-    background-color: #243552;
-    border: 1px solid #65D6C6;
-    color: #65D6C6;
-}
-
-/* Pressed */
-QToolButton:pressed {
-    background-color: #0f172a;
-    border: 1px solid #65D6C6;
-}
-
-/* Disabled */
-QToolButton:disabled {
-    background-color: #111a2e;
-    color: #59677a;
-    border: 1px solid #1b2a41;
-}</string>
-                 </property>
-                 <property name="text">
-                  <string>Comparar Imagenes</string>
-                 </property>
-                 <property name="icon">
-                  <iconset>
-                   <normaloff>../../resources/Icons/Icons_aqua/page.png</normaloff>../../resources/Icons/Icons_aqua/page.png</iconset>
-                 </property>
-                 <property name="toolButtonStyle">
-                  <enum>Qt::ToolButtonStyle::ToolButtonTextUnderIcon</enum>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </widget>
+             <layout class="QHBoxLayout" name="Layout_horizontal_2">
+              <item>
+               <widget class="QToolButton" name="Tbtn_Importar_Imagenes">
+                <property name="minimumSize">
+                 <size>
+                  <width>150</width>
+                  <height>50</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>300</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+                <property name="cursor">
+                 <cursorShape>PointingHandCursor</cursorShape>
+                </property>
+                <property name="accessibleDescription">
+                 <string/>
+                </property>
+                <property name="layoutDirection">
+                 <enum>Qt::LayoutDirection::LeftToRight</enum>
+                </property>
+                <property name="autoFillBackground">
+                 <bool>false</bool>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true"/>
+                </property>
+                <property name="text">
+                 <string>Cargar Imagen</string>
+                </property>
+                <property name="icon">
+                 <iconset>
+                  <normaloff>../../resources/Icons/Icons_aqua/image.png</normaloff>../../resources/Icons/Icons_aqua/image.png</iconset>
+                </property>
+                <property name="toolButtonStyle">
+                 <enum>Qt::ToolButtonStyle::ToolButtonTextUnderIcon</enum>
+                </property>
+                <property name="cssClass" stdset="0">
+                 <string>Primary</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <spacer name="horizontalSpacer">
+                <property name="orientation">
+                 <enum>Qt::Orientation::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <widget class="QToolButton" name="Tbtn_CompararImgs">
+                <property name="minimumSize">
+                 <size>
+                  <width>150</width>
+                  <height>50</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>300</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+                <property name="cursor">
+                 <cursorShape>PointingHandCursor</cursorShape>
+                </property>
+                <property name="accessibleDescription">
+                 <string/>
+                </property>
+                <property name="layoutDirection">
+                 <enum>Qt::LayoutDirection::LeftToRight</enum>
+                </property>
+                <property name="autoFillBackground">
+                 <bool>false</bool>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true"/>
+                </property>
+                <property name="text">
+                 <string>Comparar Imagenes</string>
+                </property>
+                <property name="icon">
+                 <iconset>
+                  <normaloff>../../resources/Icons/Icons_aqua/page.png</normaloff>../../resources/Icons/Icons_aqua/page.png</iconset>
+                </property>
+                <property name="toolButtonStyle">
+                 <enum>Qt::ToolButtonStyle::ToolButtonTextUnderIcon</enum>
+                </property>
+                <property name="cssClass" stdset="0">
+                 <string>Primary</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QToolButton" name="Tbtn_Resultados">
+                <property name="minimumSize">
+                 <size>
+                  <width>150</width>
+                  <height>50</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>300</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+                <property name="cursor">
+                 <cursorShape>PointingHandCursor</cursorShape>
+                </property>
+                <property name="accessibleDescription">
+                 <string/>
+                </property>
+                <property name="layoutDirection">
+                 <enum>Qt::LayoutDirection::LeftToRight</enum>
+                </property>
+                <property name="autoFillBackground">
+                 <bool>false</bool>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true"/>
+                </property>
+                <property name="text">
+                 <string>Ver Resultados</string>
+                </property>
+                <property name="icon">
+                 <iconset>
+                  <normaloff>../../resources/Icons/Icons_aqua/bar-chart.png</normaloff>../../resources/Icons/Icons_aqua/bar-chart.png</iconset>
+                </property>
+                <property name="toolButtonStyle">
+                 <enum>Qt::ToolButtonStyle::ToolButtonTextUnderIcon</enum>
+                </property>
+                <property name="cssClass" stdset="0">
+                 <string>Primary</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
             </item>
            </layout>
           </widget>
@@ -781,22 +649,24 @@ QToolButton:disabled {
        </widget>
       </item>
       <item>
-       <widget class="QFrame" name="frame_4">
+       <widget class="QFrame" name="Panel_3">
         <property name="frameShape">
          <enum>QFrame::Shape::NoFrame</enum>
         </property>
         <property name="frameShadow">
          <enum>QFrame::Shadow::Raised</enum>
         </property>
+        <property name="cssClass" stdset="0">
+         <string>Surface</string>
+        </property>
         <layout class="QHBoxLayout" name="horizontalLayout_4" stretch="0">
          <item>
-          <widget class="QFrame" name="frame_Activity">
+          <widget class="QFrame" name="Card_historial">
            <property name="layoutDirection">
             <enum>Qt::LayoutDirection::LeftToRight</enum>
            </property>
            <property name="styleSheet">
-            <string notr="true">background-color: rgb(17, 26, 46);
-border-radius: 20px;</string>
+            <string notr="true"/>
            </property>
            <property name="frameShape">
             <enum>QFrame::Shape::StyledPanel</enum>
@@ -804,14 +674,17 @@ border-radius: 20px;</string>
            <property name="frameShadow">
             <enum>QFrame::Shadow::Raised</enum>
            </property>
+           <property name="cssClass" stdset="0">
+            <string>Card</string>
+           </property>
            <layout class="QVBoxLayout" name="verticalLayout_4" stretch="1,7">
             <property name="sizeConstraint">
              <enum>QLayout::SizeConstraint::SetDefaultConstraint</enum>
             </property>
             <item>
-             <layout class="QHBoxLayout" name="Layout_HeadFrame4">
+             <layout class="QHBoxLayout" name="Layout_horizontal_3">
               <item>
-               <widget class="QLabel" name="label_11">
+               <widget class="QLabel" name="lb_img_4">
                 <property name="minimumSize">
                  <size>
                   <width>28</width>
@@ -839,31 +712,21 @@ border-radius: 20px;</string>
                </widget>
               </item>
               <item>
-               <widget class="QLabel" name="label_12">
+               <widget class="QLabel" name="lb_primary_3">
                 <property name="font">
                  <font>
-                  <pointsize>-1</pointsize>
                   <italic>false</italic>
                   <bold>true</bold>
                  </font>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">
-QLabel{
-    background-color: transparent;
-    color: #c8d3e0;
-
-    border: none;
-
-    font-size: 20px;
-    font-weight: 700;
-
-    padding: 4px 0px;
-}
-</string>
+                 <string notr="true"/>
                 </property>
                 <property name="text">
                  <string>Actividad Reciente</string>
+                </property>
+                <property name="cssClass" stdset="0">
+                 <string>Mediana</string>
                 </property>
                </widget>
               </item>
@@ -881,7 +744,7 @@ QLabel{
                </spacer>
               </item>
               <item>
-               <widget class="QPushButton" name="btn_verTodos_2">
+               <widget class="QPushButton" name="btn_verTodos">
                 <property name="cursor">
                  <cursorShape>PointingHandCursor</cursorShape>
                 </property>
@@ -889,7 +752,7 @@ QLabel{
                  <enum>Qt::LayoutDirection::RightToLeft</enum>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">color: rgb(101, 214, 198);</string>
+                 <string notr="true">color: #65D6C6;</string>
                 </property>
                 <property name="text">
                  <string>Ver todos</string>
@@ -898,20 +761,26 @@ QLabel{
                  <iconset>
                   <normaloff>../../resources/Icons/Icons_aqua/chevron_right.png</normaloff>../../resources/Icons/Icons_aqua/chevron_right.png</iconset>
                 </property>
+                <property name="flat">
+                 <bool>true</bool>
+                </property>
                </widget>
               </item>
              </layout>
             </item>
             <item>
-             <widget class="QFrame" name="frame_container_items">
+             <widget class="QFrame" name="Card_actividad_reciente">
               <property name="styleSheet">
-               <string notr="true">background-color: rgb(27, 42, 65);</string>
+               <string notr="true"/>
               </property>
               <property name="frameShape">
                <enum>QFrame::Shape::StyledPanel</enum>
               </property>
               <property name="frameShadow">
                <enum>QFrame::Shadow::Raised</enum>
+              </property>
+              <property name="cssClass" stdset="0">
+               <string>Card</string>
               </property>
               <layout class="QVBoxLayout" name="verticalLayout_7">
                <property name="topMargin">
@@ -920,938 +789,6 @@ QLabel{
                <property name="bottomMargin">
                 <number>15</number>
                </property>
-               <item>
-                <widget class="QFrame" name="frame_Item1_7">
-                 <property name="minimumSize">
-                  <size>
-                   <width>0</width>
-                   <height>70</height>
-                  </size>
-                 </property>
-                 <property name="maximumSize">
-                  <size>
-                   <width>16777215</width>
-                   <height>50</height>
-                  </size>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true">background-color: rgb(17, 26, 46);</string>
-                 </property>
-                 <property name="frameShape">
-                  <enum>QFrame::Shape::StyledPanel</enum>
-                 </property>
-                 <property name="frameShadow">
-                  <enum>QFrame::Shadow::Raised</enum>
-                 </property>
-                 <layout class="QHBoxLayout" name="Layout_Item_4" stretch="7,1,3,1,3,1,3">
-                  <property name="spacing">
-                   <number>9</number>
-                  </property>
-                  <property name="sizeConstraint">
-                   <enum>QLayout::SizeConstraint::SetDefaultConstraint</enum>
-                  </property>
-                  <item>
-                   <widget class="QLabel" name="lb_ImgItem_4">
-                    <property name="minimumSize">
-                     <size>
-                      <width>50</width>
-                      <height>50</height>
-                     </size>
-                    </property>
-                    <property name="maximumSize">
-                     <size>
-                      <width>130</width>
-                      <height>90</height>
-                     </size>
-                    </property>
-                    <property name="text">
-                     <string/>
-                    </property>
-                    <property name="pixmap">
-                     <pixmap>../../resources/images/BioImage Optimizer Dashboard.png</pixmap>
-                    </property>
-                    <property name="scaledContents">
-                     <bool>true</bool>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <spacer name="horizontalSpacer_18">
-                    <property name="orientation">
-                     <enum>Qt::Orientation::Horizontal</enum>
-                    </property>
-                    <property name="sizeHint" stdset="0">
-                     <size>
-                      <width>40</width>
-                      <height>20</height>
-                     </size>
-                    </property>
-                   </spacer>
-                  </item>
-                  <item>
-                   <layout class="QVBoxLayout" name="Layout_Data_Item_4" stretch="1,1">
-                    <property name="spacing">
-                     <number>6</number>
-                    </property>
-                    <property name="leftMargin">
-                     <number>9</number>
-                    </property>
-                    <property name="topMargin">
-                     <number>9</number>
-                    </property>
-                    <property name="rightMargin">
-                     <number>9</number>
-                    </property>
-                    <property name="bottomMargin">
-                     <number>9</number>
-                    </property>
-                    <item>
-                     <widget class="QLabel" name="lb_Proceso_Item_4">
-                      <property name="styleSheet">
-                       <string notr="true">QLabel{
-    background-color: transparent;
-    color: #c8d3e0;
-    border: none;
-    font-size: 16px;
-    font-weight: 600;
-}</string>
-                      </property>
-                      <property name="text">
-                       <string>[PROCESO]</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QLabel" name="lb_Desc_Item_4">
-                      <property name="styleSheet">
-                       <string notr="true">QLabel{
-     background-color: transparent;
-    color: #8799B0;
-
-    border: none;
-
-    font-size: 11px;
-    font-weight: 400;
-
-    padding: 0px;
-}</string>
-                      </property>
-                      <property name="text">
-                       <string>[DESCRIPCION]</string>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </item>
-                  <item>
-                   <spacer name="horizontalSpacer_19">
-                    <property name="orientation">
-                     <enum>Qt::Orientation::Horizontal</enum>
-                    </property>
-                    <property name="sizeHint" stdset="0">
-                     <size>
-                      <width>40</width>
-                      <height>20</height>
-                     </size>
-                    </property>
-                   </spacer>
-                  </item>
-                  <item>
-                   <layout class="QVBoxLayout" name="Layout_Data_Item1_8" stretch="1,1">
-                    <property name="spacing">
-                     <number>6</number>
-                    </property>
-                    <property name="leftMargin">
-                     <number>9</number>
-                    </property>
-                    <property name="topMargin">
-                     <number>9</number>
-                    </property>
-                    <property name="rightMargin">
-                     <number>9</number>
-                    </property>
-                    <property name="bottomMargin">
-                     <number>9</number>
-                    </property>
-                    <item>
-                     <widget class="QLabel" name="lb_Fecha_Item_4">
-                      <property name="styleSheet">
-                       <string notr="true">QLabel{
-    background-color: transparent;
-    color: #c8d3e0;
-    border: none;
-    font-size: 16px;
-    font-weight: 600;
-}</string>
-                      </property>
-                      <property name="text">
-                       <string>[FECHA]</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QLabel" name="lb_Hora_Item_4">
-                      <property name="styleSheet">
-                       <string notr="true">QLabel{
-     background-color: transparent;
-    color: #8799B0;
-
-    border: none;
-
-    font-size: 11px;
-    font-weight: 400;
-
-    padding: 0px;
-}</string>
-                      </property>
-                      <property name="text">
-                       <string>[HORA]</string>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </item>
-                  <item>
-                   <spacer name="horizontalSpacer_20">
-                    <property name="orientation">
-                     <enum>Qt::Orientation::Horizontal</enum>
-                    </property>
-                    <property name="sizeHint" stdset="0">
-                     <size>
-                      <width>40</width>
-                      <height>20</height>
-                     </size>
-                    </property>
-                   </spacer>
-                  </item>
-                  <item>
-                   <widget class="QLabel" name="Badge_completado_4">
-                    <property name="maximumSize">
-                     <size>
-                      <width>250</width>
-                      <height>50</height>
-                     </size>
-                    </property>
-                    <property name="styleSheet">
-                     <string notr="true">QLabel {
-    background-color: rgba(101, 214, 198, 0.13);
-    border: 1px solid rgba(101, 214, 198, 0.45);
-    border-radius: 12px;
-    color: #65D6C6;
-    font-size: 16px;
-    font-weight: 500;
-    padding: 4px 12px;
-    min-height: 22px;
-	text-align: center;
-}</string>
-                    </property>
-                    <property name="text">
-                     <string>Completado</string>
-                    </property>
-                   </widget>
-                  </item>
-                 </layout>
-                </widget>
-               </item>
-               <item>
-                <widget class="QFrame" name="frame_Item1_6">
-                 <property name="minimumSize">
-                  <size>
-                   <width>0</width>
-                   <height>70</height>
-                  </size>
-                 </property>
-                 <property name="maximumSize">
-                  <size>
-                   <width>16777215</width>
-                   <height>50</height>
-                  </size>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true">background-color: rgb(17, 26, 46);</string>
-                 </property>
-                 <property name="frameShape">
-                  <enum>QFrame::Shape::StyledPanel</enum>
-                 </property>
-                 <property name="frameShadow">
-                  <enum>QFrame::Shadow::Raised</enum>
-                 </property>
-                 <layout class="QHBoxLayout" name="Layout_Item_3" stretch="7,1,3,1,3,1,3">
-                  <property name="spacing">
-                   <number>9</number>
-                  </property>
-                  <property name="sizeConstraint">
-                   <enum>QLayout::SizeConstraint::SetDefaultConstraint</enum>
-                  </property>
-                  <item>
-                   <widget class="QLabel" name="lb_ImgItem_3">
-                    <property name="minimumSize">
-                     <size>
-                      <width>50</width>
-                      <height>50</height>
-                     </size>
-                    </property>
-                    <property name="maximumSize">
-                     <size>
-                      <width>130</width>
-                      <height>90</height>
-                     </size>
-                    </property>
-                    <property name="text">
-                     <string/>
-                    </property>
-                    <property name="pixmap">
-                     <pixmap>../../resources/images/BioImage Optimizer Dashboard.png</pixmap>
-                    </property>
-                    <property name="scaledContents">
-                     <bool>true</bool>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <spacer name="horizontalSpacer_15">
-                    <property name="orientation">
-                     <enum>Qt::Orientation::Horizontal</enum>
-                    </property>
-                    <property name="sizeHint" stdset="0">
-                     <size>
-                      <width>40</width>
-                      <height>20</height>
-                     </size>
-                    </property>
-                   </spacer>
-                  </item>
-                  <item>
-                   <layout class="QVBoxLayout" name="Layout_Data_Item_3" stretch="1,1">
-                    <property name="spacing">
-                     <number>6</number>
-                    </property>
-                    <property name="leftMargin">
-                     <number>9</number>
-                    </property>
-                    <property name="topMargin">
-                     <number>9</number>
-                    </property>
-                    <property name="rightMargin">
-                     <number>9</number>
-                    </property>
-                    <property name="bottomMargin">
-                     <number>9</number>
-                    </property>
-                    <item>
-                     <widget class="QLabel" name="lb_Proceso_Item_3">
-                      <property name="styleSheet">
-                       <string notr="true">QLabel{
-    background-color: transparent;
-    color: #c8d3e0;
-    border: none;
-    font-size: 16px;
-    font-weight: 600;
-}</string>
-                      </property>
-                      <property name="text">
-                       <string>[PROCESO]</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QLabel" name="lb_Desc_Item_3">
-                      <property name="styleSheet">
-                       <string notr="true">QLabel{
-     background-color: transparent;
-    color: #8799B0;
-
-    border: none;
-
-    font-size: 11px;
-    font-weight: 400;
-
-    padding: 0px;
-}</string>
-                      </property>
-                      <property name="text">
-                       <string>[DESCRIPCION]</string>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </item>
-                  <item>
-                   <spacer name="horizontalSpacer_16">
-                    <property name="orientation">
-                     <enum>Qt::Orientation::Horizontal</enum>
-                    </property>
-                    <property name="sizeHint" stdset="0">
-                     <size>
-                      <width>40</width>
-                      <height>20</height>
-                     </size>
-                    </property>
-                   </spacer>
-                  </item>
-                  <item>
-                   <layout class="QVBoxLayout" name="Layout_Data_Item1_7" stretch="1,1">
-                    <property name="spacing">
-                     <number>6</number>
-                    </property>
-                    <property name="leftMargin">
-                     <number>9</number>
-                    </property>
-                    <property name="topMargin">
-                     <number>9</number>
-                    </property>
-                    <property name="rightMargin">
-                     <number>9</number>
-                    </property>
-                    <property name="bottomMargin">
-                     <number>9</number>
-                    </property>
-                    <item>
-                     <widget class="QLabel" name="lb_Fecha_Item_3">
-                      <property name="styleSheet">
-                       <string notr="true">QLabel{
-    background-color: transparent;
-    color: #c8d3e0;
-    border: none;
-    font-size: 16px;
-    font-weight: 600;
-}</string>
-                      </property>
-                      <property name="text">
-                       <string>[FECHA]</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QLabel" name="lb_Hora_Item_3">
-                      <property name="styleSheet">
-                       <string notr="true">QLabel{
-     background-color: transparent;
-    color: #8799B0;
-
-    border: none;
-
-    font-size: 11px;
-    font-weight: 400;
-
-    padding: 0px;
-}</string>
-                      </property>
-                      <property name="text">
-                       <string>[HORA]</string>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </item>
-                  <item>
-                   <spacer name="horizontalSpacer_17">
-                    <property name="orientation">
-                     <enum>Qt::Orientation::Horizontal</enum>
-                    </property>
-                    <property name="sizeHint" stdset="0">
-                     <size>
-                      <width>40</width>
-                      <height>20</height>
-                     </size>
-                    </property>
-                   </spacer>
-                  </item>
-                  <item>
-                   <widget class="QLabel" name="Badge_completado_3">
-                    <property name="maximumSize">
-                     <size>
-                      <width>250</width>
-                      <height>50</height>
-                     </size>
-                    </property>
-                    <property name="styleSheet">
-                     <string notr="true">QLabel {
-    background-color: rgba(101, 214, 198, 0.13);
-    border: 1px solid rgba(101, 214, 198, 0.45);
-    border-radius: 12px;
-    color: #65D6C6;
-    font-size: 16px;
-    font-weight: 500;
-    padding: 4px 12px;
-    min-height: 22px;
-	text-align: center;
-}</string>
-                    </property>
-                    <property name="text">
-                     <string>Completado</string>
-                    </property>
-                   </widget>
-                  </item>
-                 </layout>
-                </widget>
-               </item>
-               <item>
-                <widget class="QFrame" name="frame_Item1_5">
-                 <property name="minimumSize">
-                  <size>
-                   <width>0</width>
-                   <height>70</height>
-                  </size>
-                 </property>
-                 <property name="maximumSize">
-                  <size>
-                   <width>16777215</width>
-                   <height>50</height>
-                  </size>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true">background-color: rgb(17, 26, 46);</string>
-                 </property>
-                 <property name="frameShape">
-                  <enum>QFrame::Shape::StyledPanel</enum>
-                 </property>
-                 <property name="frameShadow">
-                  <enum>QFrame::Shadow::Raised</enum>
-                 </property>
-                 <layout class="QHBoxLayout" name="Layout_Item_2" stretch="7,1,3,1,3,1,3">
-                  <property name="spacing">
-                   <number>9</number>
-                  </property>
-                  <property name="sizeConstraint">
-                   <enum>QLayout::SizeConstraint::SetDefaultConstraint</enum>
-                  </property>
-                  <item>
-                   <widget class="QLabel" name="lb_ImgItem_2">
-                    <property name="minimumSize">
-                     <size>
-                      <width>50</width>
-                      <height>50</height>
-                     </size>
-                    </property>
-                    <property name="maximumSize">
-                     <size>
-                      <width>130</width>
-                      <height>90</height>
-                     </size>
-                    </property>
-                    <property name="text">
-                     <string/>
-                    </property>
-                    <property name="pixmap">
-                     <pixmap>../../resources/images/BioImage Optimizer Dashboard.png</pixmap>
-                    </property>
-                    <property name="scaledContents">
-                     <bool>true</bool>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <spacer name="horizontalSpacer_12">
-                    <property name="orientation">
-                     <enum>Qt::Orientation::Horizontal</enum>
-                    </property>
-                    <property name="sizeHint" stdset="0">
-                     <size>
-                      <width>40</width>
-                      <height>20</height>
-                     </size>
-                    </property>
-                   </spacer>
-                  </item>
-                  <item>
-                   <layout class="QVBoxLayout" name="Layout_Data_Item_2" stretch="1,1">
-                    <property name="spacing">
-                     <number>6</number>
-                    </property>
-                    <property name="leftMargin">
-                     <number>9</number>
-                    </property>
-                    <property name="topMargin">
-                     <number>9</number>
-                    </property>
-                    <property name="rightMargin">
-                     <number>9</number>
-                    </property>
-                    <property name="bottomMargin">
-                     <number>9</number>
-                    </property>
-                    <item>
-                     <widget class="QLabel" name="lb_Proceso_Item_2">
-                      <property name="styleSheet">
-                       <string notr="true">QLabel{
-    background-color: transparent;
-    color: #c8d3e0;
-    border: none;
-    font-size: 16px;
-    font-weight: 600;
-}</string>
-                      </property>
-                      <property name="text">
-                       <string>[PROCESO]</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QLabel" name="lb_Desc_Item_2">
-                      <property name="styleSheet">
-                       <string notr="true">QLabel{
-     background-color: transparent;
-    color: #8799B0;
-
-    border: none;
-
-    font-size: 11px;
-    font-weight: 400;
-
-    padding: 0px;
-}</string>
-                      </property>
-                      <property name="text">
-                       <string>[DESCRIPCION]</string>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </item>
-                  <item>
-                   <spacer name="horizontalSpacer_13">
-                    <property name="orientation">
-                     <enum>Qt::Orientation::Horizontal</enum>
-                    </property>
-                    <property name="sizeHint" stdset="0">
-                     <size>
-                      <width>40</width>
-                      <height>20</height>
-                     </size>
-                    </property>
-                   </spacer>
-                  </item>
-                  <item>
-                   <layout class="QVBoxLayout" name="Layout_Data_Item1_6" stretch="1,1">
-                    <property name="spacing">
-                     <number>6</number>
-                    </property>
-                    <property name="leftMargin">
-                     <number>9</number>
-                    </property>
-                    <property name="topMargin">
-                     <number>9</number>
-                    </property>
-                    <property name="rightMargin">
-                     <number>9</number>
-                    </property>
-                    <property name="bottomMargin">
-                     <number>9</number>
-                    </property>
-                    <item>
-                     <widget class="QLabel" name="lb_Fecha_Item_2">
-                      <property name="styleSheet">
-                       <string notr="true">QLabel{
-    background-color: transparent;
-    color: #c8d3e0;
-    border: none;
-    font-size: 16px;
-    font-weight: 600;
-}</string>
-                      </property>
-                      <property name="text">
-                       <string>[FECHA]</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QLabel" name="lb_Hora_Item_2">
-                      <property name="styleSheet">
-                       <string notr="true">QLabel{
-     background-color: transparent;
-    color: #8799B0;
-
-    border: none;
-
-    font-size: 11px;
-    font-weight: 400;
-
-    padding: 0px;
-}</string>
-                      </property>
-                      <property name="text">
-                       <string>[HORA]</string>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </item>
-                  <item>
-                   <spacer name="horizontalSpacer_14">
-                    <property name="orientation">
-                     <enum>Qt::Orientation::Horizontal</enum>
-                    </property>
-                    <property name="sizeHint" stdset="0">
-                     <size>
-                      <width>40</width>
-                      <height>20</height>
-                     </size>
-                    </property>
-                   </spacer>
-                  </item>
-                  <item>
-                   <widget class="QLabel" name="Badge_completado_2">
-                    <property name="maximumSize">
-                     <size>
-                      <width>250</width>
-                      <height>50</height>
-                     </size>
-                    </property>
-                    <property name="styleSheet">
-                     <string notr="true">QLabel {
-    background-color: rgba(101, 214, 198, 0.13);
-    border: 1px solid rgba(101, 214, 198, 0.45);
-    border-radius: 12px;
-    color: #65D6C6;
-    font-size: 16px;
-    font-weight: 500;
-    padding: 4px 12px;
-    min-height: 22px;
-	text-align: center;
-}</string>
-                    </property>
-                    <property name="text">
-                     <string>Completado</string>
-                    </property>
-                   </widget>
-                  </item>
-                 </layout>
-                </widget>
-               </item>
-               <item>
-                <widget class="QFrame" name="frame_Item1_4">
-                 <property name="minimumSize">
-                  <size>
-                   <width>0</width>
-                   <height>70</height>
-                  </size>
-                 </property>
-                 <property name="maximumSize">
-                  <size>
-                   <width>16777215</width>
-                   <height>50</height>
-                  </size>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true">background-color: rgb(17, 26, 46);</string>
-                 </property>
-                 <property name="frameShape">
-                  <enum>QFrame::Shape::StyledPanel</enum>
-                 </property>
-                 <property name="frameShadow">
-                  <enum>QFrame::Shadow::Raised</enum>
-                 </property>
-                 <layout class="QHBoxLayout" name="Layout_Item" stretch="7,1,3,1,3,1,3">
-                  <property name="spacing">
-                   <number>9</number>
-                  </property>
-                  <property name="sizeConstraint">
-                   <enum>QLayout::SizeConstraint::SetDefaultConstraint</enum>
-                  </property>
-                  <item>
-                   <widget class="QLabel" name="lb_ImgItem">
-                    <property name="minimumSize">
-                     <size>
-                      <width>50</width>
-                      <height>50</height>
-                     </size>
-                    </property>
-                    <property name="maximumSize">
-                     <size>
-                      <width>130</width>
-                      <height>90</height>
-                     </size>
-                    </property>
-                    <property name="text">
-                     <string/>
-                    </property>
-                    <property name="pixmap">
-                     <pixmap>../../resources/images/BioImage Optimizer Dashboard.png</pixmap>
-                    </property>
-                    <property name="scaledContents">
-                     <bool>true</bool>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <spacer name="horizontalSpacer_9">
-                    <property name="orientation">
-                     <enum>Qt::Orientation::Horizontal</enum>
-                    </property>
-                    <property name="sizeHint" stdset="0">
-                     <size>
-                      <width>40</width>
-                      <height>20</height>
-                     </size>
-                    </property>
-                   </spacer>
-                  </item>
-                  <item>
-                   <layout class="QVBoxLayout" name="Layout_Data_Item" stretch="1,1">
-                    <property name="spacing">
-                     <number>6</number>
-                    </property>
-                    <property name="leftMargin">
-                     <number>9</number>
-                    </property>
-                    <property name="topMargin">
-                     <number>9</number>
-                    </property>
-                    <property name="rightMargin">
-                     <number>9</number>
-                    </property>
-                    <property name="bottomMargin">
-                     <number>9</number>
-                    </property>
-                    <item>
-                     <widget class="QLabel" name="lb_Proceso_Item">
-                      <property name="styleSheet">
-                       <string notr="true">QLabel{
-    background-color: transparent;
-    color: #c8d3e0;
-    border: none;
-    font-size: 16px;
-    font-weight: 600;
-}</string>
-                      </property>
-                      <property name="text">
-                       <string>[PROCESO]</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QLabel" name="lb_Desc_Item">
-                      <property name="styleSheet">
-                       <string notr="true">QLabel{
-     background-color: transparent;
-    color: #8799B0;
-
-    border: none;
-
-    font-size: 11px;
-    font-weight: 400;
-
-    padding: 0px;
-}</string>
-                      </property>
-                      <property name="text">
-                       <string>[DESCRIPCION]</string>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </item>
-                  <item>
-                   <spacer name="horizontalSpacer_10">
-                    <property name="orientation">
-                     <enum>Qt::Orientation::Horizontal</enum>
-                    </property>
-                    <property name="sizeHint" stdset="0">
-                     <size>
-                      <width>40</width>
-                      <height>20</height>
-                     </size>
-                    </property>
-                   </spacer>
-                  </item>
-                  <item>
-                   <layout class="QVBoxLayout" name="Layout_Data_Item1_5" stretch="1,1">
-                    <property name="spacing">
-                     <number>6</number>
-                    </property>
-                    <property name="leftMargin">
-                     <number>9</number>
-                    </property>
-                    <property name="topMargin">
-                     <number>9</number>
-                    </property>
-                    <property name="rightMargin">
-                     <number>9</number>
-                    </property>
-                    <property name="bottomMargin">
-                     <number>9</number>
-                    </property>
-                    <item>
-                     <widget class="QLabel" name="lb_Fecha_Item">
-                      <property name="styleSheet">
-                       <string notr="true">QLabel{
-    background-color: transparent;
-    color: #c8d3e0;
-    border: none;
-    font-size: 16px;
-    font-weight: 600;
-}</string>
-                      </property>
-                      <property name="text">
-                       <string>[FECHA]</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QLabel" name="lb_Hora_Item">
-                      <property name="styleSheet">
-                       <string notr="true">QLabel{
-     background-color: transparent;
-    color: #8799B0;
-
-    border: none;
-
-    font-size: 11px;
-    font-weight: 400;
-
-    padding: 0px;
-}</string>
-                      </property>
-                      <property name="text">
-                       <string>[HORA]</string>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </item>
-                  <item>
-                   <spacer name="horizontalSpacer_11">
-                    <property name="orientation">
-                     <enum>Qt::Orientation::Horizontal</enum>
-                    </property>
-                    <property name="sizeHint" stdset="0">
-                     <size>
-                      <width>40</width>
-                      <height>20</height>
-                     </size>
-                    </property>
-                   </spacer>
-                  </item>
-                  <item>
-                   <widget class="QLabel" name="Badge_completado">
-                    <property name="maximumSize">
-                     <size>
-                      <width>250</width>
-                      <height>50</height>
-                     </size>
-                    </property>
-                    <property name="styleSheet">
-                     <string notr="true">QLabel {
-    background-color: rgba(101, 214, 198, 0.13);
-    border: 1px solid rgba(101, 214, 198, 0.45);
-    border-radius: 12px;
-    color: #65D6C6;
-    font-size: 16px;
-    font-weight: 500;
-    padding: 4px 12px;
-    min-height: 22px;
-	text-align: center;
-}</string>
-                    </property>
-                    <property name="text">
-                     <string>Completado</string>
-                    </property>
-                   </widget>
-                  </item>
-                 </layout>
-                </widget>
-               </item>
               </layout>
              </widget>
             </item>
