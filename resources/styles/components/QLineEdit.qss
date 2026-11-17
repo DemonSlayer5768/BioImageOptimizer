@@ -1,0 +1,24 @@
+
+QLineEdit#lineEdit_buscar {
+    background-color: #111a2e;
+    border: 1px solid #2f3e56;
+    border-radius: 8px;
+    padding: 8px 14px;
+    color: #c8d3e0;
+    font-size: 14px;
+    selection-background-color: #65D6C6;
+    selection-color: #0b0f1a;
+}
+
+QLineEdit#lineEdit_buscar:hover {
+    border: 1px solid #3a506b;
+}
+
+QLineEdit#lineEdit_buscar:focus {
+    border: 1px solid #65D6C6;
+    background-color: #1b2a41;
+}
+
+QLineEdit#lineEdit_buscar::placeholder {
+    color: #2f3e56;
+}

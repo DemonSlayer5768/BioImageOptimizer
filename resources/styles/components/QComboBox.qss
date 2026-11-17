@@ -1,0 +1,67 @@
+/* --- ComboBox --- */
+
+QComboBox {
+    border: 1px solid #2f3e56;
+    background-color: #111a2e;
+    border-radius: 12px;
+    color: #c8d3e0;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 6px 36px 6px 14px;   /* espacio a la derecha para la flecha */
+    min-height: 26px;
+}
+
+QComboBox:hover {
+    border: 1px solid #3a506b;
+    background-color: #16223a;
+}
+
+QComboBox:disabled {
+    background-color: #0d1422;
+    border: 1px solid #1e2a3d;
+    color: #4a5a70;
+}
+
+/* --- Zona del desplegable (flecha) --- */
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 32px;
+    border: none;
+    border-left: 1px solid #2f3e56;   /* separador sutil */
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+    background-color: rgba(101, 214, 198, 0.05);
+}
+QComboBox::down-arrow {
+    image: url("D:/Git/BioImageOptimizer/resources/Icons/Icons_aqua/chevron_down.png");
+    width: 16px;
+    height: 16px;
+}
+
+QComboBox::down-arrow:on {
+    image: url("D:/Git/BioImageOptimizer/resources/Icons/Icons_aqua/chevron_down.png");
+}
+
+QComboBox::down-arrow:disabled {
+    image: none;
+}
+
+/* --- Lista desplegable --- */
+QComboBox QAbstractItemView {
+    show-decoration-selected: 1;
+    selection-background-color: rgba(101, 214, 198, 0.20);
+    selection-color: #65D6C6;
+}
+
+QComboBox QAbstractItemView::item {
+    min-height: 30px;
+    padding: 7px 12px;
+    border-radius: 6px;
+}
+
+QComboBox QAbstractItemView::item:hover {
+    background-color: rgba(101, 214, 198, 0.15);
+    color: #65D6C6;
+}
+

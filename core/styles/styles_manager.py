@@ -21,7 +21,12 @@ class StyleManager:
             #carpeta components
             "components/QLabel.qss",
             "components/QPushButton.qss",
-           
+            "components/QComboBox.qss",
+            "components/QLineEdit.qss",
+            "components/QCheckBox.qss",
+            "components/QSlider.qss",
+            "components/QSpinBox.qss",
+            "components/QGroupBox.qss",
 
         ]
 

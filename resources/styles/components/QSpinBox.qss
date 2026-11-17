@@ -1,0 +1,70 @@
+
+/* ===== SpinBox ===== */
+QSpinBox, QDoubleSpinBox {
+    background-color: #111a2e;
+    border: 1px solid #2f3e56;
+    border-radius: 12px;
+    color: #c8d3e0;
+    font-family: "Segoe UI", "Inter", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    padding: 4px 30px 4px 12px;
+    min-height: 28px;
+
+    /* Elimina el fondo magenta del texto seleccionado */
+    selection-background-color: transparent;
+    selection-color: #c8d3e0;   /* mismo color que el texto normal */
+}
+
+QSpinBox:hover, QDoubleSpinBox:hover {
+    border: 1px solid #3a506b;
+    background-color: #16223a;
+}
+QSpinBox:focus, QDoubleSpinBox:focus {
+    border: 1px solid #65D6C6;
+}
+QSpinBox:disabled, QDoubleSpinBox:disabled {
+    background-color: #0d1422;
+    border: 1px solid #1e2a3d;
+    color: #4a5a70;
+}
+
+/* Botones de flechas */
+QSpinBox::up-button, QDoubleSpinBox::up-button {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 28px;
+    border: none;
+    border-left: 1px solid #2f3e56;
+    border-top-right-radius: 11px;
+}
+QSpinBox::down-button, QDoubleSpinBox::down-button {
+    subcontrol-origin: padding;
+    subcontrol-position: bottom right;
+    width: 28px;
+    border: none;
+    border-left: 1px solid #2f3e56;
+    border-bottom-right-radius: 11px;
+}
+
+/* Iconos */
+QSpinBox::up-arrow, QDoubleSpinBox::up-arrow {
+    image: url("D:/Git/BioImageOptimizer/resources/Icons/Icons_aqua/chevron_up.png");
+    width: 12px; height: 12px;
+}
+QSpinBox::down-arrow, QDoubleSpinBox::down-arrow {
+    image: url("D:/Git/BioImageOptimizer/resources/Icons/Icons_aqua/chevron_down.png");
+    width: 12px; height: 12px;
+}
+
+/* Hover flechas */
+QSpinBox::up-button:hover, QSpinBox::down-button:hover,
+QDoubleSpinBox::up-button:hover, QDoubleSpinBox::down-button:hover {
+    background-color: rgba(101, 214, 198, 0.15);
+}
+
+/* Flechas disabled */
+QSpinBox::up-arrow:disabled, QSpinBox::down-arrow:disabled,
+QDoubleSpinBox::up-arrow:disabled, QDoubleSpinBox::down-arrow:disabled {
+    image: none;
+}

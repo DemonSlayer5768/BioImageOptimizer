@@ -1,0 +1,32 @@
+/* ===== CheckBox ===== */
+QCheckBox {
+	background-color: transparent;
+    spacing: 10px;         /* separación indicador ↔ texto */
+    color: #c8d3e0;
+    font-size: 13px;
+    font-weight: 300;
+    margin: 2px 0;         /* separación vertical entre checkboxes */
+}
+
+QCheckBox::indicator {
+    width: 18px;
+    height: 18px;
+    border: 1px solid #2f3e56;
+    border-radius: 5px;
+}
+
+QCheckBox:hover { color: #65D6C6; }
+QCheckBox::indicator:hover { border: 1px solid #65D6C6; }
+
+QCheckBox::indicator:checked {
+    border: 1px solid #65D6C6;
+    image: url("D:/Git/BioImageOptimizer/resources/Icons/Icons_aqua/verify.png");
+    width: 15px;
+    height: 15px;
+}
+
+QCheckBox::indicator:disabled {
+    background-color: #0d1422;
+    border: 1px solid #1e2a3d;
+}
+QCheckBox:disabled { color: #4a5a70; }
