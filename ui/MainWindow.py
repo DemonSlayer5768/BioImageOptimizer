@@ -55,31 +55,31 @@ class MainWindow(QMainWindow):
 
         # Conectar botones SideBar
         self.btn_dashboard.clicked.connect(
-            lambda: self.change_page(self.dashboard)
+            lambda: self.navegar_sidebar(self.dashboard)
         )
         self.btn_galeria.clicked.connect(
-            lambda: self.change_page(self.galeria)
+            lambda: self.navegar_sidebar(self.galeria)
         )
         self.btn_optimizacion.clicked.connect(
-            lambda: self.change_page(self.optimizacion)
+            lambda: self.navegar_sidebar(self.optimizacion)
         )
         self.btn_procesamiento.clicked.connect(
-            lambda: self.change_page(self.procesamiento)
+            lambda: self.navegar_sidebar(self.procesamiento)
         )
         self.btn_restauracion.clicked.connect(
-            lambda: self.change_page(self.restauracion)
+            lambda: self.navegar_sidebar(self.restauracion)
         )
         self.btn_segmentacion.clicked.connect(
-            lambda: self.change_page(self.segmentacion)
+            lambda: self.navegar_sidebar(self.segmentacion)
         )
         self.btn_binarizacion.clicked.connect(
-            lambda: self.change_page(self.binarizacion)
+            lambda: self.navegar_sidebar(self.binarizacion)
         )
         self.btn_configuracion.clicked.connect(
-            lambda: self.change_page(self.configuracion)
+            lambda: self.navegar_sidebar(self.configuracion)
         )
         self.btn_historial.clicked.connect(
-            lambda: self.change_page(self.historial)
+            lambda: self.navegar_sidebar(self.historial)
         )
         # self.btn_evaluacion.clicked.connect(
         #     lambda: self.change_page(self.evaluacion)
@@ -98,8 +98,18 @@ class MainWindow(QMainWindow):
     def change_page(self, page):
         if page is not self.galeria:
             self.galeria.set_modo_seleccion(False)
+        else:
+            self.galeria.actualizar_al_entrar()
 
         self.stackedWidget.setCurrentWidget(page)
+
+    def navegar_sidebar(self, page):
+        self.limpiar_formularios()
+        self.change_page(page)
+
+    def limpiar_formularios(self):
+        self.binarizacion.limpiar_formulario()
+        self.galeria.limpiar_formulario()
 
     def abrir_galeria_para_binarizacion(self):
         self.galeria.set_modo_seleccion(True)

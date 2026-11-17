@@ -12,7 +12,7 @@ from PyQt6.QtWidgets import (
     QInputDialog,
 )
 from PyQt6.QtGui import QPixmap, QIcon
-from PyQt6.QtCore import Qt, QSize, pyqtSignal
+from PyQt6.QtCore import Qt, QSize, QStandardPaths, pyqtSignal
 
 
 class Frm_Galeria(QWidget):
@@ -129,6 +129,10 @@ class Frm_Galeria(QWidget):
             self.modificar_imagen
         )
 
+        self.btn_guardar.clicked.connect(
+            self.guardar_imagenes
+        )
+
         self.btn_abrir.clicked.connect(
             self.abrir_imagen_seleccionada
         )
@@ -152,6 +156,16 @@ class Frm_Galeria(QWidget):
 
         self.btn_abrir.setVisible(activo)
         self.actualizar_seleccion_tarjetas()
+
+    def limpiar_formulario(self):
+        self.set_modo_seleccion(False)
+        self.lineEdit_buscar.clear()
+        self.cmb_categoria.setCurrentIndex(0)
+
+    def actualizar_al_entrar(self):
+        self.lineEdit_buscar.clear()
+        self.cmb_categoria.setCurrentIndex(0)
+        self.cargar_imagenes()
 
     def abrir_imagen_seleccionada(self):
         items = self.listWidget_imagenes.selectedItems()
@@ -546,6 +560,102 @@ class Frm_Galeria(QWidget):
                 self,
                 "Imágenes modificadas",
                 f"Imágenes modificadas: {modificadas}"
+            )
+
+    # ----------------------------------
+    # GUARDAR IMÁGENES
+    # ----------------------------------
+
+    def guardar_imagenes(self):
+        items = self.listWidget_imagenes.selectedItems()
+        if not items:
+            QMessageBox.warning(
+                self,
+                "Guardar imágenes",
+                "Selecciona una o más imágenes de la galería.",
+            )
+            return
+
+        directorio_descargas = QStandardPaths.writableLocation(
+            QStandardPaths.StandardLocation.DownloadLocation
+        )
+        if not directorio_descargas:
+            QMessageBox.warning(
+                self,
+                "Carpeta no disponible",
+                "No se pudo encontrar la carpeta Descargas.",
+            )
+            return
+
+        directorio = QFileDialog.getExistingDirectory(
+            self,
+            "Seleccionar carpeta para guardar las imágenes",
+            directorio_descargas,
+            QFileDialog.Option.ShowDirsOnly,
+        )
+        if not directorio:
+            return
+
+        carpeta_destino = Path(directorio)
+        try:
+            reservados = {
+                archivo.name.casefold()
+                for archivo in carpeta_destino.iterdir()
+                if archivo.is_file()
+            }
+        except OSError as error:
+            QMessageBox.warning(
+                self,
+                "Error al guardar",
+                f"No se pudo leer la carpeta seleccionada:\n{error}",
+            )
+            return
+
+        guardadas = 0
+        omitidas = 0
+        errores = []
+
+        for item in items:
+            origen = Path(item.data(Qt.ItemDataRole.UserRole))
+            if not origen.is_file():
+                errores.append(f"{origen.name}: el archivo ya no existe.")
+                continue
+
+            destino = carpeta_destino / origen.name
+            if origen.resolve() == destino.resolve():
+                omitidas += 1
+                continue
+
+            numero = 2
+            while destino.name.casefold() in reservados:
+                destino = carpeta_destino / (
+                    f"{origen.stem}_{numero}{origen.suffix}"
+                )
+                numero += 1
+
+            try:
+                shutil.copy2(origen, destino)
+                reservados.add(destino.name.casefold())
+                guardadas += 1
+            except OSError as error:
+                errores.append(f"{origen.name}: {error}")
+
+        if guardadas:
+            self.cargar_imagenes()
+
+        resumen = f"Imágenes guardadas: {guardadas}\nOmitidas: {omitidas}"
+        if errores:
+            QMessageBox.warning(
+                self,
+                "Guardado incompleto",
+                resumen + "\n\nNo se pudieron guardar:\n"
+                + "\n".join(errores),
+            )
+        else:
+            QMessageBox.information(
+                self,
+                "Imágenes guardadas",
+                resumen,
             )
 
     # ----------------------------------

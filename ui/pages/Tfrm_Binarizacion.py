@@ -83,6 +83,16 @@ class Frm_Binarizacion(QWidget):
             self.actualizar_resultado_si_preview
         )
         self.chk_preview.toggled.connect(self.alternar_vista_previa)
+        self.chk_ver_original.toggled.connect(
+            self.actualizar_visibilidad_imagenes
+        )
+        self.actualizar_visibilidad_imagenes(
+            self.chk_ver_original.isChecked()
+        )
+
+    def actualizar_visibilidad_imagenes(self, mostrar_original: bool):
+        self.grp_original.setVisible(mostrar_original)
+        self.grp_bin.setVisible(True)
 
     def cargar_imagen(self, ruta: str):
         imagen = QImage(ruta)
@@ -113,12 +123,19 @@ class Frm_Binarizacion(QWidget):
         self.btn_guardar.setEnabled(False)
 
     def reiniciar_parametros(self):
-        self.cmb_metodo.setCurrentText("Otsu")
+        self.cmb_metodo.setCurrentIndex(0)
         self.spin_umbral.setValue(127)
         self.spin_tamano_bloque.setValue(11)
         self.doubleSpinBox.setValue(2.0)
         self.chk_invertir.setChecked(False)
+        self.chk_mascara.setChecked(False)
+        self.chk_preview.setChecked(False)
+        self.chk_ver_original.setChecked(True)
         self.aplicar_binarizacion()
+
+    def limpiar_formulario(self):
+        self.quitar_imagen()
+        self.reiniciar_parametros()
 
     def actualizar_parametros_metodo(self):
         metodo = self.cmb_metodo.currentText()
