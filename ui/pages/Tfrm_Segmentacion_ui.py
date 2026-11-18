@@ -504,6 +504,10 @@ class Ui_Frm_Segmentacion(object):
 
         self.verticalLayout_7.addWidget(self.gb_slic)
 
+        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.verticalLayout_7.addItem(self.verticalSpacer)
+
         self.Layout_horizontal_2 = QHBoxLayout()
         self.Layout_horizontal_2.setObjectName(u"Layout_horizontal_2")
         self.Layout_horizontal_2.setContentsMargins(-1, 9, -1, 9)
@@ -547,7 +551,7 @@ class Ui_Frm_Segmentacion(object):
 
         self.verticalLayout_7.setStretch(2, 2)
         self.verticalLayout_7.setStretch(4, 2)
-        self.verticalLayout_7.setStretch(8, 1)
+        self.verticalLayout_7.setStretch(9, 1)
 
         self.Layout_horizontal.addWidget(self.Card_parametros)
 

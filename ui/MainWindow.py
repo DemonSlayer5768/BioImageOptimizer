@@ -131,3 +131,7 @@ class MainWindow(QMainWindow):
         self.galeria.set_modo_seleccion(False)
         self.segmentacion.cargar_imagen(ruta)
         self.change_page(self.segmentacion)
+
+    def closeEvent(self, evento):
+        self.segmentacion.esperar_procesamiento()
+        super().closeEvent(evento)

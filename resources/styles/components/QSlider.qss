@@ -23,11 +23,6 @@ QSlider::handle:horizontal {
     border-radius: 9px;
 }
 
-QSlider::handle:horizontal:hover {
-    background-color: #8BE5D8;
-    border: 2px solid #65D6C6;
-}
-
 QSlider::handle:horizontal:disabled {
     background-color: #4a5a70;
     border: 2px solid #1b2a41;
