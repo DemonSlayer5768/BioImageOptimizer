@@ -2,6 +2,8 @@ PyQt6==6.12.1
 PyQt6-Qt6==6.12.0
 PyQt6_sip==13.13.1
 numpy>=1.26,<3
+scipy>=1.11,<2
+scikit-image>=0.22,<1
 PySide6==6.12.0
 PySide6_Addons==6.12.0
 PySide6_Essentials==6.12.0
