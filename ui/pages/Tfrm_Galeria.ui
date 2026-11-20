@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>950</width>
-    <height>820</height>
+    <width>800</width>
+    <height>600</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -15,12 +15,6 @@
     <horstretch>0</horstretch>
     <verstretch>0</verstretch>
    </sizepolicy>
-  </property>
-  <property name="minimumSize">
-   <size>
-    <width>950</width>
-    <height>820</height>
-   </size>
   </property>
   <property name="windowTitle">
    <string>Form</string>
@@ -48,12 +42,6 @@
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
-     </property>
-     <property name="minimumSize">
-      <size>
-       <width>950</width>
-       <height>820</height>
-      </size>
      </property>
      <property name="styleSheet">
       <string notr="true"/>
@@ -119,7 +107,7 @@
               <string notr="true"/>
              </property>
              <property name="text">
-              <string>Dashboard</string>
+              <string>Galeria</string>
              </property>
              <property name="cssClass" stdset="0">
               <string>Tittle</string>
@@ -132,7 +120,7 @@
               <string notr="true"/>
              </property>
              <property name="text">
-              <string>Resumen General</string>
+              <string>Galeria de imagenes</string>
              </property>
              <property name="cssClass" stdset="0">
               <string>Description</string>
@@ -374,7 +362,7 @@ QListWidget::item:selected {
             <number>9</number>
            </property>
            <property name="bottomMargin">
-            <number>15</number>
+            <number>20</number>
            </property>
            <item>
             <widget class="QPushButton" name="btn_abrir">

@@ -1,10 +1,12 @@
 from PyQt6.QtWidgets import QMainWindow
 from PyQt6 import uic
 
+from resources.styles.components.md_cssClass import centrar_ventana
 from ui.pages.Frm_Dashboard import Frm_Dashboard
 from ui.pages.Frm_Galeria import Frm_Galeria
 from ui.pages.Frm_Binarizacion import Frm_Binarizacion
 from ui.pages.Frm_Segmentacion import Frm_Segmentacion
+
 
 
 
@@ -16,6 +18,9 @@ class MainWindow(QMainWindow):
         super().__init__()
 
         uic.loadUi("ui/MainWindow.ui", self)
+
+        #centrar ventana
+        centrar_ventana(self)
 
         # Crear paginas
         self.dashboard = Frm_Dashboard()

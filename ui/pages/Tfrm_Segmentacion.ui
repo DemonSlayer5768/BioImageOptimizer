@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>Frm_Segmentacion</class>
  <widget class="QWidget" name="Frm_Segmentacion">
@@ -6,9 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>949</width>
-    <height>820</height>
+    <width>800</width>
+    <height>1305</height>
    </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
   </property>
   <property name="windowTitle">
    <string>Form</string>
@@ -35,7 +41,7 @@
    <item>
     <widget class="QFrame" name="Panel_container">
      <property name="styleSheet">
-      <string notr="true" />
+      <string notr="true"/>
      </property>
      <property name="frameShape">
       <enum>QFrame::Shape::StyledPanel</enum>
@@ -56,7 +62,7 @@
          </size>
         </property>
         <property name="toolTip">
-         <string />
+         <string/>
         </property>
         <property name="layoutDirection">
          <enum>Qt::LayoutDirection::LeftToRight</enum>
@@ -95,7 +101,7 @@
            <item>
             <widget class="QLabel" name="lb_titulo">
              <property name="styleSheet">
-              <string notr="true" />
+              <string notr="true"/>
              </property>
              <property name="text">
               <string>Segmentación </string>
@@ -108,7 +114,7 @@
            <item>
             <widget class="QLabel" name="lb_descripcion">
              <property name="styleSheet">
-              <string notr="true" />
+              <string notr="true"/>
              </property>
              <property name="text">
               <string>Segmentación de imagenes</string>
@@ -128,11 +134,11 @@
         <property name="minimumSize">
          <size>
           <width>0</width>
-          <height>710</height>
+          <height>0</height>
          </size>
         </property>
         <property name="styleSheet">
-         <string notr="true" />
+         <string notr="true"/>
         </property>
         <property name="frameShape">
          <enum>QFrame::Shape::StyledPanel</enum>
@@ -149,7 +155,7 @@
            <item>
             <widget class="QFrame" name="panel_imagen">
              <property name="styleSheet">
-              <string notr="true" />
+              <string notr="true"/>
              </property>
              <property name="frameShape">
               <enum>QFrame::Shape::StyledPanel</enum>
@@ -173,7 +179,7 @@
                  <item>
                   <widget class="QLabel" name="lb_img_orignal">
                    <property name="text">
-                    <string />
+                    <string/>
                    </property>
                    <property name="scaledContents">
                     <bool>true</bool>
@@ -195,7 +201,7 @@
                  <item>
                   <widget class="QLabel" name="lb_img_bin">
                    <property name="text">
-                    <string />
+                    <string/>
                    </property>
                    <property name="scaledContents">
                     <bool>true</bool>
@@ -214,7 +220,7 @@
               <enum>Qt::LayoutDirection::LeftToRight</enum>
              </property>
              <property name="styleSheet">
-              <string notr="true" />
+              <string notr="true"/>
              </property>
              <property name="frameShape">
               <enum>QFrame::Shape::StyledPanel</enum>
@@ -229,7 +235,7 @@
               <item>
                <widget class="QLabel" name="lb_pantalla_2">
                 <property name="styleSheet">
-                 <string notr="true" />
+                 <string notr="true"/>
                 </property>
                 <property name="text">
                  <string>Segmentación</string>
@@ -284,7 +290,7 @@
                    <enum>Qt::LayoutDirection::LeftToRight</enum>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true" />
+                   <string notr="true"/>
                   </property>
                   <property name="text">
                    <string>Importar</string>
@@ -307,7 +313,7 @@
                    <cursorShape>PointingHandCursor</cursorShape>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true" />
+                   <string notr="true"/>
                   </property>
                   <property name="text">
                    <string>Quitar imagen</string>
@@ -327,7 +333,7 @@
                    <cursorShape>PointingHandCursor</cursorShape>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true" />
+                   <string notr="true"/>
                   </property>
                   <property name="text">
                    <string>Ver original</string>
@@ -355,7 +361,7 @@
                    <enum>Qt::LayoutDirection::LeftToRight</enum>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true" />
+                   <string notr="true"/>
                   </property>
                   <property name="text">
                    <string>Preview</string>
@@ -373,7 +379,7 @@
                  <cursorShape>PointingHandCursor</cursorShape>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true" />
+                 <string notr="true"/>
                 </property>
                 <property name="title">
                  <string>Parámetros</string>
@@ -395,7 +401,7 @@
                     <enum>Qt::LayoutDirection::LeftToRight</enum>
                    </property>
                    <property name="styleSheet">
-                    <string notr="true" />
+                    <string notr="true"/>
                    </property>
                    <item>
                     <property name="text">
@@ -445,7 +451,7 @@
                     <cursorShape>OpenHandCursor</cursorShape>
                    </property>
                    <property name="styleSheet">
-                    <string notr="true" />
+                    <string notr="true"/>
                    </property>
                    <property name="maximum">
                     <number>255</number>
@@ -474,7 +480,7 @@
                     <cursorShape>OpenHandCursor</cursorShape>
                    </property>
                    <property name="styleSheet">
-                    <string notr="true" />
+                    <string notr="true"/>
                    </property>
                    <property name="maximum">
                     <number>255</number>
@@ -510,7 +516,7 @@
                         <enum>Qt::LayoutDirection::LeftToRight</enum>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true" />
+                        <string notr="true"/>
                        </property>
                        <property name="readOnly">
                         <bool>false</bool>
@@ -572,7 +578,7 @@
                     <enum>Qt::LayoutDirection::LeftToRight</enum>
                    </property>
                    <property name="styleSheet">
-                    <string notr="true" />
+                    <string notr="true"/>
                    </property>
                    <property name="text">
                     <string>Invertir resultado</string>
@@ -600,7 +606,7 @@
                     <enum>Qt::LayoutDirection::LeftToRight</enum>
                    </property>
                    <property name="styleSheet">
-                    <string notr="true" />
+                    <string notr="true"/>
                    </property>
                    <property name="text">
                     <string>Usar máscara previa </string>
@@ -638,7 +644,7 @@
                     <cursorShape>OpenHandCursor</cursorShape>
                    </property>
                    <property name="styleSheet">
-                    <string notr="true" />
+                    <string notr="true"/>
                    </property>
                    <property name="maximum">
                     <number>255</number>
@@ -946,7 +952,7 @@
                    <cursorShape>PointingHandCursor</cursorShape>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true" />
+                   <string notr="true"/>
                   </property>
                   <property name="text">
                    <string>Reiniciar</string>
@@ -969,7 +975,7 @@
                    <cursorShape>PointingHandCursor</cursorShape>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true" />
+                   <string notr="true"/>
                   </property>
                   <property name="text">
                    <string>Guardar</string>
@@ -1028,6 +1034,6 @@
    </item>
   </layout>
  </widget>
- <resources />
- <connections />
+ <resources/>
+ <connections/>
 </ui>

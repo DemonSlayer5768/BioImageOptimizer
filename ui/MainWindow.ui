@@ -6,20 +6,20 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1200</width>
-    <height>820</height>
+    <width>800</width>
+    <height>878</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>800</width>
+    <height>600</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <property name="minimumSize">
-    <size>
-     <width>1200</width>
-     <height>800</height>
-    </size>
-   </property>
    <property name="layoutDirection">
     <enum>Qt::LayoutDirection::LeftToRight</enum>
    </property>
@@ -43,7 +43,7 @@
      <widget class="QFrame" name="frame_sideBar">
       <property name="minimumSize">
        <size>
-        <width>220</width>
+        <width>200</width>
         <height>0</height>
        </size>
       </property>
@@ -709,7 +709,7 @@ QLabel#sectionTitle {
        <bool>true</bool>
       </property>
       <property name="sizePolicy">
-       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
         <horstretch>0</horstretch>
         <verstretch>0</verstretch>
        </sizepolicy>
@@ -730,7 +730,7 @@ QLabel#sectionTitle {
        <enum>QFrame::Shadow::Plain</enum>
       </property>
       <property name="currentIndex">
-       <number>3</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="page_DashBoard">
        <property name="sizePolicy">
@@ -738,12 +738,6 @@ QLabel#sectionTitle {
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>900</width>
-         <height>820</height>
-        </size>
        </property>
        <property name="maximumSize">
         <size>

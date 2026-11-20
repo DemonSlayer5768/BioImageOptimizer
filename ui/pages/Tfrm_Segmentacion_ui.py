@@ -25,7 +25,12 @@ class Ui_Frm_Segmentacion(object):
     def setupUi(self, Frm_Segmentacion):
         if not Frm_Segmentacion.objectName():
             Frm_Segmentacion.setObjectName(u"Frm_Segmentacion")
-        Frm_Segmentacion.resize(949, 820)
+        Frm_Segmentacion.resize(800, 1305)
+        sizePolicy = QSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(Frm_Segmentacion.sizePolicy().hasHeightForWidth())
+        Frm_Segmentacion.setSizePolicy(sizePolicy)
         Frm_Segmentacion.setLayoutDirection(Qt.LayoutDirection.RightToLeft)
         self.verticalLayout = QVBoxLayout(Frm_Segmentacion)
         self.verticalLayout.setSpacing(1)
@@ -77,7 +82,7 @@ class Ui_Frm_Segmentacion(object):
 
         self.Panel_body = QFrame(self.Panel_container)
         self.Panel_body.setObjectName(u"Panel_body")
-        self.Panel_body.setMinimumSize(QSize(0, 710))
+        self.Panel_body.setMinimumSize(QSize(0, 0))
         self.Panel_body.setStyleSheet(u"")
         self.Panel_body.setFrameShape(QFrame.Shape.StyledPanel)
         self.Panel_body.setFrameShadow(QFrame.Shadow.Raised)

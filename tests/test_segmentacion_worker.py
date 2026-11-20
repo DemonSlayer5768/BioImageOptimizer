@@ -144,6 +144,33 @@ class SegmentacionWorkerTests(unittest.TestCase):
         self.assertEqual(slider.cursor().shape(), Qt.CursorShape.ArrowCursor)
         form.deleteLater()
 
+    def test_controles_requieren_imagen_y_sliders_son_independientes(self):
+        form = Frm_Segmentacion()
+
+        self.assertFalse(form.slider_umbral_min.isEnabled())
+        self.assertFalse(form.slider_distancia_min.isEnabled())
+
+        form._imagen_original = QImage(
+            4,
+            4,
+            QImage.Format.Format_RGB32,
+        )
+        form._actualizar_estado_procesamiento(False)
+
+        self.assertTrue(form.slider_umbral_min.isEnabled())
+        self.assertTrue(form.slider_distancia_min.isEnabled())
+
+        form.slider_umbral_max.setValue(150)
+        form.slider_umbral_min.setValue(200)
+        self.assertEqual(form.slider_umbral_min.value(), 150)
+        self.assertEqual(form.slider_umbral_max.value(), 150)
+
+        form.slider_distancia_max.setValue(100)
+        form.slider_distancia_min.setValue(200)
+        self.assertEqual(form.slider_distancia_min.value(), 100)
+        self.assertEqual(form.slider_distancia_max.value(), 100)
+        form.deleteLater()
+
 
 if __name__ == "__main__":
     unittest.main()

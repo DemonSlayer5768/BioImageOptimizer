@@ -107,6 +107,7 @@ class Frm_Segmentacion(QWidget):
         self.conectar_eventos()
         self.actualizar_parametros_metodo()
         configurar_sliders(self)
+        self._actualizar_estado_procesamiento(False)
 
     def configurar_controles(self):
         self.gb_parametros.setCursor(Qt.CursorShape.ArrowCursor)
@@ -262,11 +263,7 @@ class Frm_Segmentacion(QWidget):
         self._seleccionando_semilla = False
         self.lbl_semilla.setText("Sin seleccionar")
         self.btn_elegir_semilla.setText("Elegir semilla")
-        self.btn_eliminar.setEnabled(True)
-        self.btn_reset.setEnabled(True)
-        self.btn_guardar.setEnabled(True)
-        self.btn_ejecutar.setEnabled(True)
-        self.actualizar_parametros_metodo()
+        self._actualizar_estado_procesamiento(False)
         self.actualizar_vistas()
         if self.chk_preview.isChecked():
             if self._worker is not None and self._worker.isRunning():
@@ -288,10 +285,7 @@ class Frm_Segmentacion(QWidget):
         self.lbl_semilla.setText("Sin seleccionar")
         self.btn_elegir_semilla.setText("Elegir semilla")
         self.lb_img_orignal.unsetCursor()
-        self.btn_eliminar.setEnabled(False)
-        self.btn_reset.setEnabled(False)
-        self.btn_guardar.setEnabled(False)
-        self.btn_ejecutar.setEnabled(False)
+        self._actualizar_estado_procesamiento(False)
 
     def reiniciar_parametros(self):
         self.chk_preview.setChecked(False)
@@ -364,19 +358,23 @@ class Frm_Segmentacion(QWidget):
 
     def normalizar_umbral_minimo(self, valor: int):
         if valor > self.slider_umbral_max.value():
-            self.slider_umbral_max.setValue(valor)
+            self.slider_umbral_min.setValue(self.slider_umbral_max.value())
 
     def normalizar_umbral_maximo(self, valor: int):
         if valor < self.slider_umbral_min.value():
-            self.slider_umbral_min.setValue(valor)
+            self.slider_umbral_max.setValue(self.slider_umbral_min.value())
 
     def normalizar_distancia_minima(self, valor: int):
         if valor > self.slider_distancia_max.value():
-            self.slider_distancia_max.setValue(valor)
+            self.slider_distancia_min.setValue(
+                self.slider_distancia_max.value()
+            )
 
     def normalizar_distancia_maxima(self, valor: int):
         if valor < self.slider_distancia_min.value():
-            self.slider_distancia_min.setValue(valor)
+            self.slider_distancia_max.setValue(
+                self.slider_distancia_min.value()
+            )
 
     def normalizar_tamano_bloque(self, valor: int):
         if valor % 2 == 0:
@@ -526,6 +524,42 @@ class Frm_Segmentacion(QWidget):
         self.btn_reset.setEnabled(hay_imagen and not en_proceso)
         self.btn_guardar.setEnabled(hay_imagen and not en_proceso)
         self.btn_ejecutar.setEnabled(hay_imagen and not en_proceso)
+        for slider in (
+            self.slider_umbral_min,
+            self.slider_umbral_max,
+            self.slider_distancia_min,
+            self.slider_distancia_max,
+            self.slider_tolerancia_region,
+            self.slider_compactness,
+        ):
+            slider.setCursor(
+                Qt.CursorShape.OpenHandCursor
+                if hay_imagen
+                else Qt.CursorShape.ArrowCursor
+            )
+        for control in (
+            self.cmb_metodo,
+            self.slider_umbral_min,
+            self.slider_umbral_max,
+            self.spin_tamano_bloque,
+            self.doubleSpinBox,
+            self.slider_distancia_min,
+            self.slider_distancia_max,
+            self.rd_btn_vecinos,
+            self.rd_btn_vecinos_2,
+            self.rd_btn_tres,
+            self.rd_btn_cinco,
+            self.rd_btn_siete,
+            self.rd_btn_region_vecinos,
+            self.rd_btn_region_vecinos_2,
+            self.slider_tolerancia_region,
+            self.spin_numero_clusters,
+            self.spin_numero_superpixeles,
+            self.slider_compactness,
+            self.chk_invertir,
+            self.chk_preview,
+        ):
+            control.setEnabled(hay_imagen)
         if not en_proceso:
             self.actualizar_parametros_metodo()
 

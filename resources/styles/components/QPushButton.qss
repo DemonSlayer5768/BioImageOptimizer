@@ -3,122 +3,135 @@
 QPushButtons
 ===================================== */
 
-QPushButton[cssClass="BlueButton"] {
-   
+
+/* ==========================================
+   CONFIGURACIÓN GENERAL
+   ========================================== */
+
+QPushButton[cssClass="BlueButton"],
+QPushButton[cssClass="AquaButton"],
+QPushButton[cssClass="GreenButton"],
+QPushButton[cssClass="YellowButton"],
+QPushButton[cssClass="RedButton"] {
+
     background-color: transparent;
-    border: 1px solid rgba(66, 165, 245, 0.45);
-    border-radius: 12px;
-    color: #42A5F5;
-    font-size: 16px;
+    border-radius: 8px;
+    font-size: 14px;
     font-weight: 500;
-    padding: 4px 12px;
-    min-height: 22px;
+    padding: 5px 14px;
+    min-height: 24px;
+   
+}
+
+/* ==========================================
+   BLUE BUTTON
+   ========================================== */
+
+QPushButton[cssClass="BlueButton"] {
+    color: #42A5F5;
+    border: 1px solid rgba(66, 165, 245, 0.40);
 }
 
 QPushButton[cssClass="BlueButton"]:hover {
-    background-color: rgba(66, 165, 245, 0.25);
     border: 1px solid #42A5F5;
+    color: #64B5F6;
 }
+
 QPushButton[cssClass="BlueButton"]:pressed {
-    background-color: #1E88E5;
-    color: #ffffff;
+    border: 1px solid #1E88E5;
+    color: #1E88E5;
 }
 
-
+/* ==========================================
+   AQUA BUTTON
+   ========================================== */
 
 QPushButton[cssClass="AquaButton"] {
-    background-color: #65D6C6;
-    color: #0b0f1a;
-    border: none;
-    border-radius: 8px;
-    padding: 8px 14px;
+    color: #65D6C6;
+    border: 1px solid rgba(101, 214, 198, 0.40);
 }
+
+QPushButton[cssClass="AquaButton"]:hover {
+    border: 1px solid #65D6C6;
+    color: #8BE5D9;
+}
+
+QPushButton[cssClass="AquaButton"]:pressed {
+    border: 1px solid #45BBAE;
+    color: #45BBAE;
+}
+
+/* ==========================================
+   GREEN BUTTON
+   ========================================== */
 
 QPushButton[cssClass="GreenButton"] {
-    background-color: transparent;
-    border: 1px solid rgba(76, 175, 80, 0.45);
-    border-radius: 12px;
     color: #4CAF50;
-    font-size: 16px;
-    font-weight: 500;
-    padding: 4px 12px;
-    min-height: 22px;
-   
+    border: 1px solid rgba(76, 175, 80, 0.40);
 }
+
 QPushButton[cssClass="GreenButton"]:hover {
-    background-color: rgba(76, 175, 80, 0.25);
     border: 1px solid #4CAF50;
+    color: #81C784;
 }
+
 QPushButton[cssClass="GreenButton"]:pressed {
-    background-color: #388E3C;
-    color: #ffffff;
-}
-QPushButton[cssClass="GreenButton"]:disabled {
-    background-color: rgba(47, 62, 86, 0.35);
-    border: 1px solid rgba(47, 62, 86, 0.6);
-    color: #64748b;
+    border: 1px solid #388E3C;
+    color: #388E3C;
 }
 
-
+/* ==========================================
+   YELLOW BUTTON
+   ========================================== */
 
 QPushButton[cssClass="YellowButton"] {
-  
-    border: 1px solid rgba(255, 183, 77, 0.45);
-    border-radius: 12px;
     color: #FFB74D;
-    font-size: 16px;
-    font-weight: 500;
-    padding: 4px 12px;
-    min-height: 22px;
+    border: 1px solid rgba(255, 183, 77, 0.40);
 }
 
 QPushButton[cssClass="YellowButton"]:hover {
-    background-color: rgba(255, 183, 77, 0.25);
     border: 1px solid #FFB74D;
-}
-QPushButton[cssClass="YellowButton"]:pressed {
-    background-color: #F57C00;
-    color: #ffffff;
-}
-QPushButton[cssClass="YellowButton"]:disabled {
-    background-color: rgba(47, 62, 86, 0.35);
-    border: 1px solid rgba(47, 62, 86, 0.6);
-    color: #64748b;
+    color: #FFD180;
 }
 
+QPushButton[cssClass="YellowButton"]:pressed {
+    border: 1px solid #F57C00;
+    color: #F57C00;
+}
+
+/* ==========================================
+   RED BUTTON
+   ========================================== */
+
 QPushButton[cssClass="RedButton"] {
-    background-color: rgba(239, 83, 80, 0.13);
-    border: 1px solid rgba(239, 83, 80, 0.45);
-    border-radius: 12px;
     color: #EF5350;
-    font-size: 16px;
-    font-weight: 500;
-    padding: 4px 12px;
-    min-height: 22px;
+    border: 1px solid rgba(239, 83, 80, 0.40);
 }
 
 QPushButton[cssClass="RedButton"]:hover {
-    background-color: rgba(239, 83, 80, 0.25);
     border: 1px solid #EF5350;
+    color: #E57373;
 }
+
 QPushButton[cssClass="RedButton"]:pressed {
-    background-color: #C62828;
-    color: #ffffff;
+    border: 1px solid #C62828;
+    color: #C62828;
 }
 
-
-/* Estado deshabilitado */
+/* ==========================================
+   DISABLED - TODOS LOS BOTONES
+   ========================================== */
 
 QPushButton[cssClass="BlueButton"]:disabled,
 QPushButton[cssClass="AquaButton"]:disabled,
 QPushButton[cssClass="GreenButton"]:disabled,
 QPushButton[cssClass="YellowButton"]:disabled,
 QPushButton[cssClass="RedButton"]:disabled {
-    background-color: #2F3E56;
-    color: #8996A8;
-    border: none;
-}
 
+    background-color: transparent;
+    color: #64748b;
+    border: 1px solid rgba(47, 62, 86, 0.65);
+}
 
 
 
