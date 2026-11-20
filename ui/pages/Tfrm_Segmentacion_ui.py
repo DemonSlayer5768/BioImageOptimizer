@@ -225,6 +225,7 @@ class Ui_Frm_Segmentacion(object):
 
         self.slider_umbral_min = QSlider(self.gb_parametros)
         self.slider_umbral_min.setObjectName(u"slider_umbral_min")
+        self.slider_umbral_min.setCursor(QCursor(Qt.CursorShape.OpenHandCursor))
         self.slider_umbral_min.setStyleSheet(u"")
         self.slider_umbral_min.setMaximum(255)
         self.slider_umbral_min.setSliderPosition(127)
@@ -239,6 +240,7 @@ class Ui_Frm_Segmentacion(object):
 
         self.slider_umbral_max = QSlider(self.gb_parametros)
         self.slider_umbral_max.setObjectName(u"slider_umbral_max")
+        self.slider_umbral_max.setCursor(QCursor(Qt.CursorShape.OpenHandCursor))
         self.slider_umbral_max.setStyleSheet(u"")
         self.slider_umbral_max.setMaximum(255)
         self.slider_umbral_max.setSliderPosition(127)
@@ -327,6 +329,7 @@ class Ui_Frm_Segmentacion(object):
 
         self.slider_distancia_min = QSlider(self.gb_watershed)
         self.slider_distancia_min.setObjectName(u"slider_distancia_min")
+        self.slider_distancia_min.setCursor(QCursor(Qt.CursorShape.OpenHandCursor))
         self.slider_distancia_min.setStyleSheet(u"")
         self.slider_distancia_min.setMaximum(255)
         self.slider_distancia_min.setSliderPosition(127)
@@ -342,7 +345,7 @@ class Ui_Frm_Segmentacion(object):
 
         self.slider_distancia_max = QSlider(self.gb_watershed)
         self.slider_distancia_max.setObjectName(u"slider_distancia_max")
-        self.slider_distancia_max.setStyleSheet(u"")
+        self.slider_distancia_max.setCursor(QCursor(Qt.CursorShape.OpenHandCursor))
         self.slider_distancia_max.setMaximum(255)
         self.slider_distancia_max.setSliderPosition(127)
         self.slider_distancia_max.setOrientation(Qt.Orientation.Horizontal)
@@ -461,6 +464,7 @@ class Ui_Frm_Segmentacion(object):
 
         self.slider_tolerancia_region = QSlider(self.gb_region_growing)
         self.slider_tolerancia_region.setObjectName(u"slider_tolerancia_region")
+        self.slider_tolerancia_region.setCursor(QCursor(Qt.CursorShape.OpenHandCursor))
         self.slider_tolerancia_region.setMaximum(255)
         self.slider_tolerancia_region.setValue(20)
         self.slider_tolerancia_region.setOrientation(Qt.Orientation.Horizontal)
@@ -494,6 +498,7 @@ class Ui_Frm_Segmentacion(object):
 
         self.slider_compactness = QSlider(self.gb_slic)
         self.slider_compactness.setObjectName(u"slider_compactness")
+        self.slider_compactness.setCursor(QCursor(Qt.CursorShape.OpenHandCursor))
         self.slider_compactness.setMinimum(1)
         self.slider_compactness.setMaximum(300)
         self.slider_compactness.setValue(100)

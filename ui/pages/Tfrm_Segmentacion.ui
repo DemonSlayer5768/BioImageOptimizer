@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <ui version="4.0">
  <class>Frm_Segmentacion</class>
  <widget class="QWidget" name="Frm_Segmentacion">
@@ -35,7 +35,7 @@
    <item>
     <widget class="QFrame" name="Panel_container">
      <property name="styleSheet">
-      <string notr="true"/>
+      <string notr="true" />
      </property>
      <property name="frameShape">
       <enum>QFrame::Shape::StyledPanel</enum>
@@ -56,7 +56,7 @@
          </size>
         </property>
         <property name="toolTip">
-         <string/>
+         <string />
         </property>
         <property name="layoutDirection">
          <enum>Qt::LayoutDirection::LeftToRight</enum>
@@ -95,7 +95,7 @@
            <item>
             <widget class="QLabel" name="lb_titulo">
              <property name="styleSheet">
-              <string notr="true"/>
+              <string notr="true" />
              </property>
              <property name="text">
               <string>Segmentación </string>
@@ -108,7 +108,7 @@
            <item>
             <widget class="QLabel" name="lb_descripcion">
              <property name="styleSheet">
-              <string notr="true"/>
+              <string notr="true" />
              </property>
              <property name="text">
               <string>Segmentación de imagenes</string>
@@ -132,7 +132,7 @@
          </size>
         </property>
         <property name="styleSheet">
-         <string notr="true"/>
+         <string notr="true" />
         </property>
         <property name="frameShape">
          <enum>QFrame::Shape::StyledPanel</enum>
@@ -149,7 +149,7 @@
            <item>
             <widget class="QFrame" name="panel_imagen">
              <property name="styleSheet">
-              <string notr="true"/>
+              <string notr="true" />
              </property>
              <property name="frameShape">
               <enum>QFrame::Shape::StyledPanel</enum>
@@ -173,7 +173,7 @@
                  <item>
                   <widget class="QLabel" name="lb_img_orignal">
                    <property name="text">
-                    <string/>
+                    <string />
                    </property>
                    <property name="scaledContents">
                     <bool>true</bool>
@@ -195,7 +195,7 @@
                  <item>
                   <widget class="QLabel" name="lb_img_bin">
                    <property name="text">
-                    <string/>
+                    <string />
                    </property>
                    <property name="scaledContents">
                     <bool>true</bool>
@@ -214,7 +214,7 @@
               <enum>Qt::LayoutDirection::LeftToRight</enum>
              </property>
              <property name="styleSheet">
-              <string notr="true"/>
+              <string notr="true" />
              </property>
              <property name="frameShape">
               <enum>QFrame::Shape::StyledPanel</enum>
@@ -229,7 +229,7 @@
               <item>
                <widget class="QLabel" name="lb_pantalla_2">
                 <property name="styleSheet">
-                 <string notr="true"/>
+                 <string notr="true" />
                 </property>
                 <property name="text">
                  <string>Segmentación</string>
@@ -284,7 +284,7 @@
                    <enum>Qt::LayoutDirection::LeftToRight</enum>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true"/>
+                   <string notr="true" />
                   </property>
                   <property name="text">
                    <string>Importar</string>
@@ -307,7 +307,7 @@
                    <cursorShape>PointingHandCursor</cursorShape>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true"/>
+                   <string notr="true" />
                   </property>
                   <property name="text">
                    <string>Quitar imagen</string>
@@ -327,7 +327,7 @@
                    <cursorShape>PointingHandCursor</cursorShape>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true"/>
+                   <string notr="true" />
                   </property>
                   <property name="text">
                    <string>Ver original</string>
@@ -355,7 +355,7 @@
                    <enum>Qt::LayoutDirection::LeftToRight</enum>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true"/>
+                   <string notr="true" />
                   </property>
                   <property name="text">
                    <string>Preview</string>
@@ -373,7 +373,7 @@
                  <cursorShape>PointingHandCursor</cursorShape>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true"/>
+                 <string notr="true" />
                 </property>
                 <property name="title">
                  <string>Parámetros</string>
@@ -395,7 +395,7 @@
                     <enum>Qt::LayoutDirection::LeftToRight</enum>
                    </property>
                    <property name="styleSheet">
-                    <string notr="true"/>
+                    <string notr="true" />
                    </property>
                    <item>
                     <property name="text">
@@ -441,8 +441,11 @@
                  </item>
                  <item>
                   <widget class="QSlider" name="slider_umbral_min">
+                   <property name="cursor">
+                    <cursorShape>OpenHandCursor</cursorShape>
+                   </property>
                    <property name="styleSheet">
-                    <string notr="true"/>
+                    <string notr="true" />
                    </property>
                    <property name="maximum">
                     <number>255</number>
@@ -467,8 +470,11 @@
                  </item>
                  <item>
                   <widget class="QSlider" name="slider_umbral_max">
+                   <property name="cursor">
+                    <cursorShape>OpenHandCursor</cursorShape>
+                   </property>
                    <property name="styleSheet">
-                    <string notr="true"/>
+                    <string notr="true" />
                    </property>
                    <property name="maximum">
                     <number>255</number>
@@ -504,7 +510,7 @@
                         <enum>Qt::LayoutDirection::LeftToRight</enum>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true"/>
+                        <string notr="true" />
                        </property>
                        <property name="readOnly">
                         <bool>false</bool>
@@ -566,7 +572,7 @@
                     <enum>Qt::LayoutDirection::LeftToRight</enum>
                    </property>
                    <property name="styleSheet">
-                    <string notr="true"/>
+                    <string notr="true" />
                    </property>
                    <property name="text">
                     <string>Invertir resultado</string>
@@ -594,7 +600,7 @@
                     <enum>Qt::LayoutDirection::LeftToRight</enum>
                    </property>
                    <property name="styleSheet">
-                    <string notr="true"/>
+                    <string notr="true" />
                    </property>
                    <property name="text">
                     <string>Usar máscara previa </string>
@@ -628,8 +634,11 @@
                  </item>
                  <item>
                   <widget class="QSlider" name="slider_distancia_min">
+                   <property name="cursor">
+                    <cursorShape>OpenHandCursor</cursorShape>
+                   </property>
                    <property name="styleSheet">
-                    <string notr="true"/>
+                    <string notr="true" />
                    </property>
                    <property name="maximum">
                     <number>255</number>
@@ -657,8 +666,8 @@
                  </item>
                  <item>
                   <widget class="QSlider" name="slider_distancia_max">
-                   <property name="styleSheet">
-                    <string notr="true"/>
+                   <property name="cursor">
+                    <cursorShape>OpenHandCursor</cursorShape>
                    </property>
                    <property name="maximum">
                     <number>255</number>
@@ -838,6 +847,9 @@
                  </item>
                  <item>
                   <widget class="QSlider" name="slider_tolerancia_region">
+                   <property name="cursor">
+                    <cursorShape>OpenHandCursor</cursorShape>
+                   </property>
                    <property name="maximum">
                     <number>255</number>
                    </property>
@@ -887,6 +899,9 @@
                  </item>
                  <item>
                   <widget class="QSlider" name="slider_compactness">
+                   <property name="cursor">
+                    <cursorShape>OpenHandCursor</cursorShape>
+                   </property>
                    <property name="minimum">
                     <number>1</number>
                    </property>
@@ -931,7 +946,7 @@
                    <cursorShape>PointingHandCursor</cursorShape>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true"/>
+                   <string notr="true" />
                   </property>
                   <property name="text">
                    <string>Reiniciar</string>
@@ -954,7 +969,7 @@
                    <cursorShape>PointingHandCursor</cursorShape>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true"/>
+                   <string notr="true" />
                   </property>
                   <property name="text">
                    <string>Guardar</string>
@@ -1013,6 +1028,6 @@
    </item>
   </layout>
  </widget>
- <resources/>
- <connections/>
+ <resources />
+ <connections />
 </ui>

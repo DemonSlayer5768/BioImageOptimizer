@@ -12,6 +12,8 @@ from PyQt6.QtWidgets import (
 )
 
 from algorithms.segmentacion.segmentacion import segmentar
+from resources.styles.components.md_cssClass import configurar_sliders
+
 
 
 @dataclass(frozen=True)
@@ -104,6 +106,7 @@ class Frm_Segmentacion(QWidget):
         self.configurar_controles()
         self.conectar_eventos()
         self.actualizar_parametros_metodo()
+        configurar_sliders(self)
 
     def configurar_controles(self):
         self.gb_parametros.setCursor(Qt.CursorShape.ArrowCursor)

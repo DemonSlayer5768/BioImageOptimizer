@@ -6,6 +6,7 @@ from scipy import ndimage
 from skimage.feature import peak_local_max
 from skimage.filters import threshold_local
 from skimage.segmentation import flood, slic, watershed
+from resources.styles.components.md_cssClass import configurar_sliders
 
 
 _METODO_UMBRAL = "Umbralizacion"

@@ -98,7 +98,7 @@
               <string notr="true"/>
              </property>
              <property name="text">
-              <string>Dashboard</string>
+              <string>Binarización</string>
              </property>
              <property name="cssClass" stdset="0">
               <string>Tittle</string>
@@ -111,7 +111,7 @@
               <string notr="true"/>
              </property>
              <property name="text">
-              <string>Resumen General</string>
+              <string>Binarización de imagenes</string>
              </property>
              <property name="cssClass" stdset="0">
               <string>Description</string>
@@ -622,6 +622,9 @@
                  </item>
                  <item row="3" column="0">
                   <widget class="QSlider" name="slider_umbral">
+                   <property name="cursor">
+                    <cursorShape>ClosedHandCursor</cursorShape>
+                   </property>
                    <property name="styleSheet">
                     <string notr="true"/>
                    </property>
