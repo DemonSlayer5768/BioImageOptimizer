@@ -25,7 +25,12 @@ class Ui_Frm_Binarizacion(object):
     def setupUi(self, Frm_Binarizacion):
         if not Frm_Binarizacion.objectName():
             Frm_Binarizacion.setObjectName(u"Frm_Binarizacion")
-        Frm_Binarizacion.resize(950, 820)
+        Frm_Binarizacion.resize(800, 640)
+        sizePolicy = QSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(Frm_Binarizacion.sizePolicy().hasHeightForWidth())
+        Frm_Binarizacion.setSizePolicy(sizePolicy)
         Frm_Binarizacion.setLayoutDirection(Qt.LayoutDirection.RightToLeft)
         self.verticalLayout = QVBoxLayout(Frm_Binarizacion)
         self.verticalLayout.setSpacing(1)
@@ -77,7 +82,7 @@ class Ui_Frm_Binarizacion(object):
 
         self.Panel_body = QFrame(self.Panel_container)
         self.Panel_body.setObjectName(u"Panel_body")
-        self.Panel_body.setMinimumSize(QSize(0, 710))
+        self.Panel_body.setMinimumSize(QSize(0, 0))
         self.Panel_body.setStyleSheet(u"")
         self.Panel_body.setFrameShape(QFrame.Shape.StyledPanel)
         self.Panel_body.setFrameShadow(QFrame.Shadow.Raised)
@@ -182,6 +187,17 @@ class Ui_Frm_Binarizacion(object):
 
         self.gridLayout_2.addWidget(self.chk_ver_original, 1, 0, 1, 1)
 
+        self.chk_preview = QCheckBox(self.Card_parametros)
+        self.chk_preview.setObjectName(u"chk_preview")
+        self.chk_preview.setEnabled(True)
+        self.chk_preview.setMinimumSize(QSize(0, 28))
+        self.chk_preview.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
+        self.chk_preview.setLayoutDirection(Qt.LayoutDirection.LeftToRight)
+        self.chk_preview.setStyleSheet(u"")
+        self.chk_preview.setChecked(True)
+
+        self.gridLayout_2.addWidget(self.chk_preview, 1, 1, 1, 1)
+
 
         self.verticalLayout_2.addLayout(self.gridLayout_2)
 
@@ -264,17 +280,6 @@ class Ui_Frm_Binarizacion(object):
 
         self.verticalLayout_opciones.addWidget(self.chk_invertir)
 
-        self.chk_preview = QCheckBox(self.gb_parametros)
-        self.chk_preview.setObjectName(u"chk_preview")
-        self.chk_preview.setEnabled(True)
-        self.chk_preview.setMinimumSize(QSize(0, 28))
-        self.chk_preview.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
-        self.chk_preview.setLayoutDirection(Qt.LayoutDirection.LeftToRight)
-        self.chk_preview.setStyleSheet(u"")
-        self.chk_preview.setChecked(True)
-
-        self.verticalLayout_opciones.addWidget(self.chk_preview)
-
         self.chk_mascara = QCheckBox(self.gb_parametros)
         self.chk_mascara.setObjectName(u"chk_mascara")
         self.chk_mascara.setEnabled(False)
@@ -301,6 +306,7 @@ class Ui_Frm_Binarizacion(object):
 
         self.slider_umbral = QSlider(self.gb_parametros)
         self.slider_umbral.setObjectName(u"slider_umbral")
+        self.slider_umbral.setCursor(QCursor(Qt.CursorShape.ClosedHandCursor))
         self.slider_umbral.setStyleSheet(u"")
         self.slider_umbral.setMaximum(255)
         self.slider_umbral.setSliderPosition(127)
@@ -367,9 +373,9 @@ class Ui_Frm_Binarizacion(object):
         self.Panel_Head.setToolTip("")
 #endif // QT_CONFIG(tooltip)
         self.Panel_Head.setProperty(u"cssClass", QCoreApplication.translate("Frm_Binarizacion", u"Surface", None))
-        self.lb_titulo.setText(QCoreApplication.translate("Frm_Binarizacion", u"Dashboard", None))
+        self.lb_titulo.setText(QCoreApplication.translate("Frm_Binarizacion", u"Binarizaci\u00f3n", None))
         self.lb_titulo.setProperty(u"cssClass", QCoreApplication.translate("Frm_Binarizacion", u"Tittle", None))
-        self.lb_descripcion.setText(QCoreApplication.translate("Frm_Binarizacion", u"Resumen General", None))
+        self.lb_descripcion.setText(QCoreApplication.translate("Frm_Binarizacion", u"Binarizaci\u00f3n de imagenes", None))
         self.lb_descripcion.setProperty(u"cssClass", QCoreApplication.translate("Frm_Binarizacion", u"Description", None))
         self.Panel_body.setProperty(u"cssClass", QCoreApplication.translate("Frm_Binarizacion", u"Surface", None))
         self.panel_imagen.setProperty(u"cssClass", QCoreApplication.translate("Frm_Binarizacion", u"Card", None))
@@ -385,6 +391,7 @@ class Ui_Frm_Binarizacion(object):
         self.btn_eliminar.setText(QCoreApplication.translate("Frm_Binarizacion", u"Quitar imagen", None))
         self.btn_eliminar.setProperty(u"cssClass", QCoreApplication.translate("Frm_Binarizacion", u"RedButton", None))
         self.chk_ver_original.setText(QCoreApplication.translate("Frm_Binarizacion", u"Ver original", None))
+        self.chk_preview.setText(QCoreApplication.translate("Frm_Binarizacion", u"Preview", None))
         self.gb_parametros.setTitle(QCoreApplication.translate("Frm_Binarizacion", u"Par\u00e1metros adaptativos", None))
         self.label_2.setText(QCoreApplication.translate("Frm_Binarizacion", u"Tama\u00f1o de bloque", None))
         self.label_2.setProperty(u"cssClass", QCoreApplication.translate("Frm_Binarizacion", u"Pequena", None))
@@ -399,7 +406,6 @@ class Ui_Frm_Binarizacion(object):
         self.cmb_metodo.setItemText(4, QCoreApplication.translate("Frm_Binarizacion", u"Triangle", None))
 
         self.chk_invertir.setText(QCoreApplication.translate("Frm_Binarizacion", u"Invertir resultado", None))
-        self.chk_preview.setText(QCoreApplication.translate("Frm_Binarizacion", u"Vista previa en vivo", None))
         self.chk_mascara.setText(QCoreApplication.translate("Frm_Binarizacion", u"Usar m\u00e1scara previa ", None))
         self.label.setText(QCoreApplication.translate("Frm_Binarizacion", u"Metodo de Binarizaci\u00f3n", None))
         self.label.setProperty(u"cssClass", QCoreApplication.translate("Frm_Binarizacion", u"Pequena", None))

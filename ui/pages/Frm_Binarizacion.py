@@ -11,6 +11,7 @@ from PyQt6.QtWidgets import (
 )
 
 from algorithms.binarizacion.binarizacion import binarizar
+from resources.styles.components.md_cssClass import configurar_sliders
 
 
 class Frm_Binarizacion(QWidget):
@@ -28,6 +29,7 @@ class Frm_Binarizacion(QWidget):
         self.configurar_controles()
         self.conectar_eventos()
         self.actualizar_parametros_metodo()
+        configurar_sliders(self)
 
     def configurar_controles(self):
         self.lb_img_orignal.setAlignment(Qt.AlignmentFlag.AlignCenter)

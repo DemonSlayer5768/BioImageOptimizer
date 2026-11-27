@@ -1,6 +1,6 @@
-from array import array
 from math import sqrt
 
+import numpy as np
 from PyQt6.QtGui import QImage
 
 
@@ -24,17 +24,16 @@ def binarizar(
     stride = gris.bytesPerLine()
     bits = gris.bits()
     bits.setsize(gris.sizeInBytes())
-    pixeles = bytes(bits)
+    pixeles = np.frombuffer(bits, dtype=np.uint8).reshape(alto, stride)
+    pixeles = pixeles[:, :ancho]
 
     if metodo in _METODOS_UMBRAL_GLOBAL:
         if metodo == "Fixed":
             umbral_aplicado = umbral
         else:
-            histograma = [0] * 256
-            for y in range(alto):
-                inicio = y * stride
-                for x in range(ancho):
-                    histograma[pixeles[inicio + x]] += 1
+            histograma = np.bincount(
+                pixeles.ravel(), minlength=256
+            ).tolist()
             if metodo == "Otsu":
                 umbral_aplicado = _umbral_otsu(histograma)
             else:
@@ -43,15 +42,11 @@ def binarizar(
         medias_locales = None
     elif metodo == "Adaptive Mean":
         bloque = _normalizar_bloque(tamano_bloque)
-        medias_locales = _medias_adaptativas(
-            pixeles, ancho, alto, stride, bloque
-        )
+        medias_locales = _medias_adaptativas(pixeles, bloque)
         umbral_aplicado = None
     elif metodo == "Adaptive Gaussian":
         bloque = _normalizar_bloque(tamano_bloque)
-        medias_locales = _medias_gaussianas(
-            pixeles, ancho, alto, stride, bloque
-        )
+        medias_locales = _medias_gaussianas(pixeles, bloque)
         umbral_aplicado = None
     else:
         raise ValueError(f"Método de binarización desconocido: {metodo}")
@@ -64,22 +59,20 @@ def binarizar(
     resultado.fill(0)
     salida = resultado.bits()
     salida.setsize(resultado.sizeInBytes())
-    buffer_salida = memoryview(salida)
     stride_salida = resultado.bytesPerLine()
+    buffer_salida = np.frombuffer(salida, dtype=np.uint8).reshape(
+        alto, stride_salida
+    )
 
-    for y in range(alto):
-        inicio = y * stride
-        inicio_salida = y * stride_salida
-        for x in range(ancho):
-            indice = inicio + x
-            if medias_locales is None:
-                limite = umbral_aplicado
-            else:
-                limite = medias_locales[y * ancho + x] - constante
-            es_blanco = pixeles[indice] > limite
-            if invertir:
-                es_blanco = not es_blanco
-            buffer_salida[inicio_salida + x] = 255 if es_blanco else 0
+    limite = (
+        umbral_aplicado
+        if medias_locales is None
+        else medias_locales - constante
+    )
+    es_blanco = pixeles > limite
+    if invertir:
+        np.logical_not(es_blanco, out=es_blanco)
+    buffer_salida[:, :ancho] = es_blanco * 255
 
     return resultado
 
@@ -158,96 +151,70 @@ def _umbral_triangle(histograma: list[int]) -> int:
 
 
 def _medias_adaptativas(
-    pixeles: bytes,
-    ancho: int,
-    alto: int,
-    stride: int,
+    pixeles: np.ndarray,
     bloque: int,
-) -> array:
-    columnas = ancho + 1
-    integral = array("Q", [0]) * (columnas * (alto + 1))
-
-    for y in range(alto):
-        suma_fila = 0
-        inicio = y * stride
-        fila_integral = (y + 1) * columnas
-        fila_anterior = y * columnas
-        for x in range(ancho):
-            suma_fila += pixeles[inicio + x]
-            integral[fila_integral + x + 1] = (
-                integral[fila_anterior + x + 1] + suma_fila
-            )
-
+) -> np.ndarray:
+    alto, ancho = pixeles.shape
     radio = bloque // 2
-    medias = array("d", [0.0]) * (ancho * alto)
-    for y in range(alto):
-        arriba = max(0, y - radio)
-        abajo = min(alto, y + radio + 1)
-        for x in range(ancho):
-            izquierda = max(0, x - radio)
-            derecha = min(ancho, x + radio + 1)
-            suma = (
-                integral[abajo * columnas + derecha]
-                - integral[arriba * columnas + derecha]
-                - integral[abajo * columnas + izquierda]
-                + integral[arriba * columnas + izquierda]
-            )
-            area = (abajo - arriba) * (derecha - izquierda)
-            medias[y * ancho + x] = suma / area
+    integral = np.zeros((alto + 1, ancho + 1), dtype=np.uint64)
+    integral[1:, 1:] = np.cumsum(
+        np.cumsum(pixeles, axis=0, dtype=np.uint64),
+        axis=1,
+        dtype=np.uint64,
+    )
 
-    return medias
+    arriba = np.maximum(0, np.arange(alto) - radio)
+    abajo = np.minimum(alto, np.arange(alto) + radio + 1)
+    izquierda = np.maximum(0, np.arange(ancho) - radio)
+    derecha = np.minimum(ancho, np.arange(ancho) + radio + 1)
+
+    sumas = (
+        integral[abajo[:, None], derecha[None, :]]
+        - integral[arriba[:, None], derecha[None, :]]
+        - integral[abajo[:, None], izquierda[None, :]]
+        + integral[arriba[:, None], izquierda[None, :]]
+    )
+    areas = (
+        (abajo - arriba)[:, None]
+        * (derecha - izquierda)[None, :]
+    )
+    return sumas / areas
 
 
 def _medias_gaussianas(
-    pixeles: bytes,
-    ancho: int,
-    alto: int,
-    stride: int,
+    pixeles: np.ndarray,
     bloque: int,
-) -> array:
+) -> np.ndarray:
     sigma = max(0.5, 0.3 * ((bloque - 1) * 0.5 - 1) + 0.8)
     ancho_caja = max(3, round(sqrt(4 * sigma * sigma + 1)))
     if ancho_caja % 2 == 0:
         ancho_caja += 1
     radio = ancho_caja // 2
 
-    suavizados = array("d", [0.0]) * (ancho * alto)
-    for y in range(alto):
-        inicio = y * stride
-        fila = y * ancho
-        for x in range(ancho):
-            suavizados[fila + x] = pixeles[inicio + x]
-
+    suavizados = pixeles.astype(np.float64)
     for _ in range(3):
-        horizontal = array("d", [0.0]) * (ancho * alto)
-        for y in range(alto):
-            fila = y * ancho
-            suma = sum(
-                suavizados[fila + min(ancho - 1, max(0, x))]
-                for x in range(-radio, radio + 1)
-            )
-            for x in range(ancho):
-                horizontal[fila + x] = suma / ancho_caja
-                sale = min(ancho - 1, max(0, x - radio))
-                entra = min(ancho - 1, max(0, x + radio + 1))
-                suma += (
-                    suavizados[fila + entra] - suavizados[fila + sale]
-                )
+        horizontal_padded = np.pad(
+            suavizados, ((0, 0), (radio, radio)), mode="edge"
+        )
+        horizontal_sumas = np.pad(
+            np.cumsum(horizontal_padded, axis=1),
+            ((0, 0), (1, 0)),
+        )
+        horizontal = (
+            horizontal_sumas[:, ancho_caja:]
+            - horizontal_sumas[:, :-ancho_caja]
+        ) / ancho_caja
 
-        vertical = array("d", [0.0]) * (ancho * alto)
-        for x in range(ancho):
-            suma = sum(
-                horizontal[min(alto - 1, max(0, y)) * ancho + x]
-                for y in range(-radio, radio + 1)
-            )
-            for y in range(alto):
-                vertical[y * ancho + x] = suma / ancho_caja
-                sale = min(alto - 1, max(0, y - radio))
-                entra = min(alto - 1, max(0, y + radio + 1))
-                suma += (
-                    horizontal[entra * ancho + x]
-                    - horizontal[sale * ancho + x]
-                )
-        suavizados = vertical
+        vertical_padded = np.pad(
+            horizontal, ((radio, radio), (0, 0)), mode="edge"
+        )
+        vertical_sumas = np.pad(
+            np.cumsum(vertical_padded, axis=0),
+            ((1, 0), (0, 0)),
+        )
+        suavizados = (
+            vertical_sumas[ancho_caja:, :]
+            - vertical_sumas[:-ancho_caja, :]
+        ) / ancho_caja
 
     return suavizados

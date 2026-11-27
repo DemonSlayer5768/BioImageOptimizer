@@ -23,10 +23,10 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1200, 820)
+        MainWindow.resize(800, 878)
+        MainWindow.setMinimumSize(QSize(800, 600))
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
-        self.centralwidget.setMinimumSize(QSize(1200, 800))
         self.centralwidget.setLayoutDirection(Qt.LayoutDirection.LeftToRight)
         self.horizontalLayout = QHBoxLayout(self.centralwidget)
         self.horizontalLayout.setSpacing(0)
@@ -34,7 +34,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
         self.frame_sideBar = QFrame(self.centralwidget)
         self.frame_sideBar.setObjectName(u"frame_sideBar")
-        self.frame_sideBar.setMinimumSize(QSize(220, 0))
+        self.frame_sideBar.setMinimumSize(QSize(200, 0))
         self.frame_sideBar.setStyleSheet(u"/*\n"
 "QFrame{ \n"
 "background-color: #111a2e;\n"
@@ -350,7 +350,7 @@ class Ui_MainWindow(object):
         self.stackedWidget = QStackedWidget(self.centralwidget)
         self.stackedWidget.setObjectName(u"stackedWidget")
         self.stackedWidget.setEnabled(True)
-        sizePolicy = QSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
+        sizePolicy = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.stackedWidget.sizePolicy().hasHeightForWidth())
@@ -360,12 +360,8 @@ class Ui_MainWindow(object):
         self.stackedWidget.setFrameShadow(QFrame.Shadow.Plain)
         self.page_DashBoard = QWidget()
         self.page_DashBoard.setObjectName(u"page_DashBoard")
-        sizePolicy1 = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Preferred)
-        sizePolicy1.setHorizontalStretch(0)
-        sizePolicy1.setVerticalStretch(0)
-        sizePolicy1.setHeightForWidth(self.page_DashBoard.sizePolicy().hasHeightForWidth())
-        self.page_DashBoard.setSizePolicy(sizePolicy1)
-        self.page_DashBoard.setMinimumSize(QSize(900, 820))
+        sizePolicy.setHeightForWidth(self.page_DashBoard.sizePolicy().hasHeightForWidth())
+        self.page_DashBoard.setSizePolicy(sizePolicy)
         self.page_DashBoard.setMaximumSize(QSize(16777215, 16777215))
         self.page_DashBoard.setLayoutDirection(Qt.LayoutDirection.LeftToRight)
         self.page_DashBoard.setAutoFillBackground(False)
@@ -419,7 +415,7 @@ class Ui_MainWindow(object):
         self.btn_historial.setDefault(False)
         self.btn_configuracion.setDefault(False)
         self.btn_salir.setDefault(False)
-        self.stackedWidget.setCurrentIndex(3)
+        self.stackedWidget.setCurrentIndex(0)
 
 
         QMetaObject.connectSlotsByName(MainWindow)

@@ -6,15 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>950</width>
-    <height>829</height>
+    <width>800</width>
+    <height>600</height>
    </rect>
   </property>
-  <property name="minimumSize">
-   <size>
-    <width>950</width>
-    <height>820</height>
-   </size>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
   </property>
   <property name="windowTitle">
    <string>Form</string>
@@ -40,12 +40,6 @@
    </property>
    <item>
     <widget class="QFrame" name="Panel_container">
-     <property name="minimumSize">
-      <size>
-       <width>950</width>
-       <height>800</height>
-      </size>
-     </property>
      <property name="accessibleName">
       <string>BackGround</string>
      </property>
