@@ -1,143 +1,168 @@
 # BioImage Optimizer
 
-Aplicación de escritorio para el procesamiento, optimización y análisis de imágenes, desarrollada en Python utilizando PySide6.
+Aplicación de escritorio desarrollada en Python para importar, explorar y procesar imágenes biomédicas y generales mediante una interfaz gráfica construida con PyQt6/PySide6.
 
----
+## Funcionalidades
 
-## 🎨 Identidad Visual
+### Panel principal
 
-### Paleta de colores
+- Importación de una o varias imágenes.
+- Acceso a las secciones de galería, binarización y segmentación.
+- Interfaz oscura con navegación lateral.
 
-La interfaz de BioImage Optimizer utiliza una paleta oscura con tonalidades azul marino y detalles en turquesa, buscando una apariencia moderna, minimalista y profesional.
+### Galería
 
-| Nombre     | Uso                                           | Código HEX |
-| ---------- | --------------------------------------------- | ---------- |
-| Background | Fondo general y ventanas                      | #0b0f1a    |
-| Surface    | Sidebar, tarjetas y paneles                   | #111a2e    |
-| Elevated   | Elementos internos y estados Hover            | #1b2a41    |
-| Border     | Bordes, divisores y elementos activos         | #2f3e56    |
-| Typography | Texto principal e iconos                      | #c8d3e0    |
-| Accent     | Indicadores, selección y acciones principales | #65D6C6    |
+- Visualiza las imágenes originales y procesadas.
+- Permite buscar por nombre y filtrar por categoría.
+- Importa imágenes a `data/images/originals`.
+- Permite seleccionar varias imágenes para eliminar, guardar o modificar su nombre.
+- Abre una imagen seleccionada directamente desde la galería.
 
-### Colores de botones
+Formatos admitidos: PNG, JPG, JPEG, BMP, TIFF y WebP.
 
-| Nombre        | Variant    | uso           | color   | dissabled |
-| ------------- | ---------- | ------------- | ------- | --------- | --- |
-| PrimaryButton | btn_green  | btn_agregar   | #388E3C | #2F3E56   |
-| PrimaryButton | btn_blue   | btn_modificar | #42A5F5 | #2F3E56   |
-| PrimaryButton | btn_yellow | btn_guardar   | #FFB74D | #2F3E56   |     |
-| PrimaryButton | btn_aqua   | cmbs y reset  | #65D6C6 | #2F3E56   |
-| PrimaryButton | btn_red    | btn_eliminar  | #EF5350 | #2F3E56   |
+### Binarización
 
-### Referencia visual
+- Umbral fijo.
+- Método de Otsu.
+- Método Triangle.
+- Umbral adaptativo por media.
+- Umbral adaptativo gaussiano.
+- Control opcional de inversión del resultado.
+- Vista previa configurable.
+- Guardado del resultado en `data/images/processed`.
 
-| Color      | Vista previa                         | HEX       |
-| ---------- | ------------------------------------ | --------- |
-| Background | <span style="color:#0b0f1a">■</span> | `#0b0f1a` |
-| Surface    | <span style="color:#111a2e">■</span> | `#111a2e` |
-| Elevated   | <span style="color:#1b2a41">■</span> | `#1b2a41` |
-| Border     | <span style="color:#2f3e56">■</span> | `#2f3e56` |
-| Typography | <span style="color:#c8d3e0">■</span> | `#c8d3e0` |
-| Accent     | <span style="color:#65D6C6">■</span> | `#65D6C6` |
+### Segmentación
 
----
+- Umbralización por rango.
+- Umbralización adaptativa.
+- Watershed.
+- K-means.
+- Region Growing mediante selección de una semilla en la imagen.
+- SLIC/Superpíxeles.
+- Vista previa con actualización diferida.
+- Procesamiento en segundo plano para mantener activa la interfaz.
+- Guardado del resultado en `data/images/processed`.
 
-## ⚙️ Comandos de desarrollo
+## Tecnologías
 
-Comandos útiles para configurar y trabajar con el proyecto.
+- Python
+- PyQt6 para la aplicación principal
+- PySide6 y archivos `.ui` generados con Qt Designer
+- NumPy
+- SciPy
+- scikit-image
+- QSS para el diseño visual
 
-| Descripción             | Comando                                     |
-| ----------------------- | ------------------------------------------- |
-| Activar entorno virtual | `.\env\Scripts\Activate.ps1`                |
-| Abrir Qt Designer       | `pyside6-designer`                          |
-| Ver paquetes instalados | `python -m pip list`                        |
-| Guardar dependencias    | `python -m pip freeze > requirements.txt`   |
-| Instalar dependencias   | `python -m pip install -r requirements.txt` |
-| Ejecutar aplicación     | `python main.py`                            |
+## Requisitos
 
----
+- Windows
+- Python 3.11 recomendado
+- Entorno virtual de Python
 
-## 📁 Estructura del proyecto
+Las dependencias se encuentran en `requirements.txt`.
 
-```text
-BioImageOptimizer/
-│
-├── README.md
-├── main.py
-├── requirements.txt
-├── .gitignore
-├── env/                     # entorno virtual local
-│
-├── algorithms/
-│   ├── binarizacion/
-│   ├── optimizacion/
-│   ├── procesamiento/
-│   ├── restauracion/
-│   └── segmentacion/
-│
-├── core/
-│
-├── data/
-│   ├── database/
-│   │   └── bioimageoptimizer.db
-│   ├── images/
-│   ├── originals/
-│   ├── processed/
-│   └── thumbnails/
-│
-├── resources/
-│   ├── Icons/
-│   └── images/
-│
-├── ui/
-│   ├── MainWindow.py
-│   ├── MainWindow.ui
-│   ├── __pycache__/
-│   ├── components/
-│   └── pages/
-│       ├── Tfrm_Binarizacion.py
-│       ├── Tfrm_Binarizacion.ui
-│       ├── Tfrm_Configuracion.py
-│       ├── Tfrm_Configuracion.ui
-│       ├── Tfrm_Dashboard.py
-│       ├── Tfrm_Dashboard.ui
-│       ├── Tfrm_Evaluacion.py
-│       ├── Tfrm_Evaluacion.ui
-│       ├── Tfrm_Galeria.py
-│       ├── Tfrm_Galeria.ui
-│       ├── Tfrm_Historial.py
-│       ├── Tfrm_Historial.ui
-│       ├── Tfrm_Optimizacion.py
-│       ├── Tfrm_Optimizacion.ui
-│       ├── Tfrm_Procesamiento.py
-│       ├── Tfrm_Procesamiento.ui
-│       ├── Tfrm_Restauracion.py
-│       ├── Tfrm_Restauracion.ui
-│       ├── Tfrm_Segmentacion.py
-│       └── Tfrm_Segmentacion.ui
-│
-└── .git/
-```
+## Instalación
 
----
-
-## 🚀 Ejecución del proyecto
-
-1. Clonar el repositorio.
-2. Crear un entorno virtual.
-3. Activar el entorno virtual.
-4. Instalar las dependencias.
-5. Ejecutar la aplicación.
+Desde PowerShell, dentro de la carpeta del proyecto:
 
 ```powershell
 python -m venv env
 .\env\Scripts\Activate.ps1
+python -m pip install --upgrade pip
 python -m pip install -r requirements.txt
+```
+
+## Ejecución
+
+Con el entorno virtual activado:
+
+```powershell
 python main.py
 ```
 
----
+También puede ejecutarse el archivo incluido en el entorno:
 
-## 📌 Estado del proyecto
+```powershell
+.\env\Scripts\python.exe main.py
+```
 
-En desarrollo.
+## Pruebas
+
+Las pruebas usan `unittest` y cubren los algoritmos de segmentación y el comportamiento del procesamiento en segundo plano.
+
+```powershell
+python -m unittest discover -s tests -p "test_*.py"
+```
+
+## Comandos útiles
+
+| Acción | Comando |
+| --- | --- |
+| Activar el entorno virtual | `.\env\Scripts\Activate.ps1` |
+| Abrir Qt Designer | `pyside6-designer` |
+| Ver paquetes instalados | `python -m pip list` |
+| Instalar dependencias | `python -m pip install -r requirements.txt` |
+| Actualizar `requirements.txt` | `python -m pip freeze > requirements.txt` |
+| Ejecutar la aplicación | `python main.py` |
+| Ejecutar las pruebas | `python -m unittest discover -s tests -p "test_*.py"` |
+
+## Estructura del proyecto
+
+```text
+BioImageOptimizer/
+├── algorithms/
+│   ├── binarizacion/
+│   │   └── binarizacion.py
+│   └── segmentacion/
+│       └── segmentacion.py
+├── core/
+│   ├── image_manager.py
+│   └── styles/
+│       └── styles_manager.py
+├── data/
+│   ├── database/
+│   │   └── bioimageoptimizer.db
+│   └── images/
+│       ├── originals/
+│       └── processed/
+├── resources/
+│   ├── Icons/
+│   └── styles/
+│       ├── global.qss
+│       └── components/
+├── tests/
+│   ├── test_segmentacion.py
+│   └── test_segmentacion_worker.py
+├── ui/
+│   ├── MainWindow.py
+│   ├── MainWindow.ui
+│   └── pages/
+│       ├── Frm_Dashboard.py
+│       ├── Frm_Galeria.py
+│       ├── Frm_Binarizacion.py
+│       └── Frm_Segmentacion.py
+├── main.py
+├── requirements.txt
+└── README.md
+```
+
+## Diseño
+
+La interfaz utiliza una paleta oscura basada en azul marino y turquesa.
+
+| Uso | Color |
+| --- | --- |
+| Fondo principal | `#0b0f1a` |
+| Superficies y paneles | `#111a2e` |
+| Elementos elevados | `#1b2a41` |
+| Bordes y divisores | `#2f3e56` |
+| Texto principal | `#c8d3e0` |
+| Color de acento | `#65D6C6` |
+
+Los estilos se cargan desde `resources/styles/global.qss` y la carpeta `resources/styles/components`.
+
+## Estado del proyecto
+
+El proyecto se encuentra en desarrollo. Las secciones de panel, galería, binarización y segmentación están implementadas.
+
+La opción de máscara previa aparece deshabilitada en la interfaz hasta que se implemente su persistencia y aplicación.
